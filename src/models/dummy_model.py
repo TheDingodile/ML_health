@@ -1,7 +1,14 @@
-class Dummymodel():
+import torch.nn as nn
+
+
+class Dummymodel(nn.Module):
     def __init__(self):
+        super().__init__()
+
+    def trainer(self, input_ids, attention_mask, labels, tokenizer):
         pass
 
+    
     def generate(self, input_data):
         """
         Arguments:
