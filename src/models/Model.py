@@ -26,8 +26,9 @@ class Model(nn.Module):
         input_ids = batch["source_ids"].to(self.device)
         attention_mask = batch["source_mask"].to(self.device)
         labels = batch["target_ids"].to(self.device)
-        self.model.trainer(input_ids, attention_mask, labels, self.tokenizer, self.optimizer)
-
+        loss = self.model.trainer(input_ids, attention_mask, labels, self.tokenizer, self.optimizer)
+        return loss
+    
 
     def forward(self, input_data):
         return self.model.generate(input_data)

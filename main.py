@@ -23,12 +23,12 @@ class Defaults(Parameters):
 
     model_type: str = "t5"
 
-    batch_size: int = 16
+    batch_size: int = 1
 
-
-
-
-    def run(self, isServer: bool, time: int, batch_size: int, model_type:str, name:str, data_name:str, labels_name: str, answer_name: str) -> None:
+    def run(self, name: str, isServer: bool, time: int, batch_size: int, model_type:str, data_name:str, labels_name: str, answer_name: str) -> None:
+        if (isServer):
+            wandb.init(project="ML_healthcare", name=name, config={"batch_size": batch_size, "isServer": isServer, "device": str(device)})
+        
         device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         model = Model(model_type)
         evaluator = Evaluator()
@@ -36,16 +36,27 @@ class Defaults(Parameters):
         labels = read_json(labels_name)
         # answer = read_json(answer_name)
         dataset_train = T5Dataset(model.tokenizer, data, labels, is_test=False, append_schema_info=True)
-        train_loader = DataLoader(dataset_train, batch_size=batch_size, collate_fn=dataset_train.collate_fn, shuffle=False)
+        train_loader = DataLoader(dataset_train, batch_size=batch_size, collate_fn=dataset_train.collate_fn, shuffle=True)
+        dataset_test = T5Dataset(model.tokenizer, data, labels, is_test=False, append_schema_info=True)
+        test_loader = DataLoader(dataset_test, batch_size=batch_size, collate_fn=dataset_test.collate_fn, shuffle=False)
 
-        for batch in train_loader:
-            model.trainer(batch)
+        for i in range(1000):
+            for j, batch in enumerate(train_loader):
+                train_loss = model.trainer(batch)
+                if (isServer):
+                    wandb.log({"trains": j, "train_loss": train_loss})
+                else:
+                    print(f"trains: {j}, train_loss: {train_loss:.6f}")
 
-        # split data into train and test
-        predictions = model(data)
-        evaluator.evaluate(labels, predictions, name)
-        save_predictions(name, predictions)
-        save_model(name, model)
+            out_eval = model.model.generate(model.tokenizer, test_loader)
+            # make dict with id of questions as keys and sql as values for both real and pred
+            real_dict = {out["id"]: out["real"] for out in out_eval}
+            pred_dict = {out["id"]: out["pred"] for out in out_eval}
+            scores = evaluator.evaluate(real_dict, pred_dict, name)
+            print(scores)
+            # split data into train and test
+            # save_predictions(name, predictions)
+            # save_model(name, model)
 
 
 Defaults.start()

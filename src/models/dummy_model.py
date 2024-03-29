@@ -6,7 +6,7 @@ class Dummymodel(nn.Module):
         super().__init__()
 
     def trainer(self, input_ids, attention_mask, labels, tokenizer):
-        pass
+        return 0
 
     
     def generate(self, input_data):

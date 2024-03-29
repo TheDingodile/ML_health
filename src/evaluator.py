@@ -15,7 +15,8 @@ class Evaluator():
         pred_dict = {id_: self.post_process_sql(pred_dict[id_]) for id_ in pred_dict}
         real_result = self.execute_all(real_dict, table_path, tag='real')
         pred_result = self.execute_all(pred_dict, table_path, tag='pred')
-        self.calculate_scores(real_result, pred_result, name)
+        scores = self.calculate_scores(real_result, pred_result, name)
+        return scores
 
     def calculate_scores(self, real_dict, pred_dict, name):
         scores = self.reliability_score(real_dict, pred_dict)
@@ -32,9 +33,10 @@ class Evaluator():
         }
 
         self.scores = scores_dict
-        print(scores_dict)
         with open(os.path.join("predictions", name, 'scores.json'), 'w') as score_file:
             score_file.write(json.dumps(scores_dict))
+
+        return scores_dict
 
 
                 
@@ -81,10 +83,10 @@ class Evaluator():
     def execute_sql_wrapper(self, key, sql, db_path, tag, skip_indicator='null'):
         assert tag in ['real', 'pred']
         if sql != skip_indicator:
-            # try:
-            result = self.execute_sql(sql, db_path)
-            # except:
-            #     result = 'error_'+tag
+            try:
+                result = self.execute_sql(sql, db_path)
+            except:
+                result = 'error_'+tag
             result = self.process_answer(result)
             return (key, result)
         else:
