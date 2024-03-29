@@ -10,7 +10,7 @@ class Evaluator():
         self.scores = {}
 
     def evaluate(self, real_dict, pred_dict, name):
-        table_path = 'mimic_iv/mimic_iv.sql'
+        table_path = 'mimic_iv/mimic_iv.sqlite'
         real_dict = {id_: self.post_process_sql(real_dict[id_]) for id_ in real_dict}
         pred_dict = {id_: self.post_process_sql(pred_dict[id_]) for id_ in pred_dict}
         real_result = self.execute_all(real_dict, table_path, tag='real')
@@ -32,6 +32,7 @@ class Evaluator():
         }
 
         self.scores = scores_dict
+        print(scores_dict)
         with open(os.path.join("predictions", name, 'scores.json'), 'w') as score_file:
             score_file.write(json.dumps(scores_dict))
 
@@ -73,7 +74,6 @@ class Evaluator():
         con = sqlite3.connect(db_path)
         con.text_factory = lambda b: b.decode(errors="ignore")
         cur = con.cursor()
-        # print(sql)
         result = cur.execute(sql).fetchall()
         con.close()
         return result
@@ -81,10 +81,10 @@ class Evaluator():
     def execute_sql_wrapper(self, key, sql, db_path, tag, skip_indicator='null'):
         assert tag in ['real', 'pred']
         if sql != skip_indicator:
-            try:
-                result = self.execute_sql(sql, db_path)
-            except:
-                result = 'error_'+tag
+            # try:
+            result = self.execute_sql(sql, db_path)
+            # except:
+            #     result = 'error_'+tag
             result = self.process_answer(result)
             return (key, result)
         else:

@@ -15,9 +15,9 @@ class Defaults(Parameters):
     GPU: None | GPU = None
     time: int = 82800
 
-    data_name: str = "mimic_iv/train/data.json"
-    labels_name: str = "mimic_iv/train/label.json"
-    answer_name: str = "mimic_iv/train/answer.json"
+    data_name: str = "sample_data/train/data.json"
+    labels_name: str = "sample_data/train/label.json"
+    answer_name: str = "sample_data/train/answer.json"
 
 
 
