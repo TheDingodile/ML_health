@@ -28,6 +28,8 @@ def split_data(data, labels, every: int):
     label_train = dict()
     data_test = []
     label_test = dict()
+    data_train_small = []
+    label_train_small = dict()
     for i, d in enumerate(data):
         if i % every == 0:
             data_test.append(d)
@@ -35,4 +37,7 @@ def split_data(data, labels, every: int):
         else:
             data_train.append(d)
             label_train[d["id"]] = labels[d["id"]]
-    return data_train, label_train, data_test, label_test
+            if i % every == 1:
+                data_train_small.append(d)
+                label_train_small[d["id"]] = labels[d["id"]]
+    return data_train, label_train, data_test, label_test, data_train_small, label_train_small

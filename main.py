@@ -25,8 +25,9 @@ class Defaults(Parameters):
     model_type: str = "t5"
 
     batch_size: int = 1
+    eval_fraction: int = 10
 
-    def run(self, name: str, isServer: bool, time: int, batch_size: int, model_type:str, data_name:str, labels_name: str, answer_name: str) -> None:
+    def run(self, name: str, eval_fraction: int, isServer: bool, time: int, batch_size: int, model_type:str, data_name:str, labels_name: str, answer_name: str) -> None:
         device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         if (isServer):
             wandb.init(project="ML_healthcare", name=name, config={"batch_size": batch_size, "isServer": isServer, "device": str(device)})
@@ -35,12 +36,14 @@ class Defaults(Parameters):
         evaluator = Evaluator()
         data = read_json(data_name)["data"]
         labels = read_json(labels_name)
-        data_train, label_train, data_test, label_test = split_data(data, labels, every=10)
+        data_train, label_train, data_test, label_test, data_train_small, label_train_small = split_data(data, labels, every=eval_fraction)
         # answer = read_json(answer_name)
         dataset_train = T5Dataset(model.tokenizer, data_train, label_train, is_test=False, append_schema_info=True, tables_file="mimic_iv/tables.json")
         train_loader = DataLoader(dataset_train, batch_size=batch_size, collate_fn=dataset_train.collate_fn, shuffle=True)
         dataset_test = T5Dataset(model.tokenizer, data_test, label_test, is_test=False, append_schema_info=True, tables_file="mimic_iv/tables.json")
         test_loader = DataLoader(dataset_test, batch_size=batch_size, collate_fn=dataset_test.collate_fn, shuffle=False)
+        dataset_train_small = T5Dataset(model.tokenizer, data_train_small, label_train_small, is_test=False, append_schema_info=True, tables_file="mimic_iv/tables.json")
+        train_loader_small = DataLoader(dataset_train_small, batch_size=batch_size, collate_fn=dataset_train_small.collate_fn, shuffle=False)
 
         for i in range(1000):
             for j, batch in enumerate(train_loader):
@@ -63,7 +66,7 @@ class Defaults(Parameters):
                 print("eval", scores)
 
             # eval on train data
-            out_eval = model.model.generate(model.tokenizer, train_loader)
+            out_eval = model.model.generate(model.tokenizer, train_loader_small)
             real_dict = {out["id"]: out["real"] for out in out_eval}
             pred_dict = {out["id"]: out["pred"] for out in out_eval}
             scores = evaluator.evaluate(real_dict, pred_dict, name)
