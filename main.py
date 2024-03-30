@@ -35,14 +35,21 @@ class Defaults(Parameters):
         evaluator = Evaluator()
         data = read_json(data_name)["data"]
         labels = read_json(labels_name)
-        data_train, label_train, data_test, label_test = split_data(data, labels, every=5)
+        data_train, label_train, data_test, label_test = split_data(data, labels, every=10)
         # answer = read_json(answer_name)
         dataset_train = T5Dataset(model.tokenizer, data_train, label_train, is_test=False, append_schema_info=True, tables_file="mimic_iv/tables.json")
         train_loader = DataLoader(dataset_train, batch_size=batch_size, collate_fn=dataset_train.collate_fn, shuffle=True)
-        dataset_test = T5Dataset(model.tokenizer, data_test, label_test, is_test=False, append_schema_info=True)
-        test_loader = DataLoader(dataset_test, batch_size=batch_size, collate_fn=dataset_test.collate_fn, shuffle=False, tables_file="mimic_iv/tables.json")
+        dataset_test = T5Dataset(model.tokenizer, data_test, label_test, is_test=False, append_schema_info=True, tables_file="mimic_iv/tables.json")
+        test_loader = DataLoader(dataset_test, batch_size=batch_size, collate_fn=dataset_test.collate_fn, shuffle=False)
 
         for i in range(1000):
+            for j, batch in enumerate(train_loader):
+                train_loss = model.trainer(batch)
+
+                if (isServer):
+                    wandb.log({"train_loss": train_loss})
+                else:
+                    print(f"train_loss: {train_loss:.6f}")
 
             # eval on test data
             out_eval = model.model.generate(model.tokenizer, test_loader)
@@ -65,14 +72,6 @@ class Defaults(Parameters):
                 wandb.log(scores)
             else:
                 print("train", scores)
-
-            for j, batch in enumerate(train_loader):
-                train_loss = model.trainer(batch)
-
-            if (isServer):
-                wandb.log({"epochs": i, "train_loss": train_loss})
-            else:
-                print(f"epochs: {i}, train_loss: {train_loss:.6f}")
 
 
 
