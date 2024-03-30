@@ -90,6 +90,8 @@ class Evaluator():
             try:
                 result = self.execute_sql(sql, db_path)
             except:
+                if tag == 'pred':
+                    return (key, skip_indicator)
                 result = 'error_'+tag
             result = self.process_answer(result)
             return (key, result)

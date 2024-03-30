@@ -25,7 +25,7 @@ class Defaults(Parameters):
     model_type: str = "t5"
 
     batch_size: int = 1
-    eval_fraction: int = 10
+    eval_fraction: int = 4
 
     def run(self, name: str, eval_fraction: int, isServer: bool, time: int, batch_size: int, model_type:str, data_name:str, labels_name: str, answer_name: str) -> None:
         device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -65,6 +65,16 @@ class Defaults(Parameters):
             else:
                 print("eval", scores)
 
+            ave_entropy_null_first_token = torch.mean(torch.tensor([v["entropy"][0] for v in out_eval if v["real"] == "null"]))
+            ave_entropy_non_null_first_token = torch.mean(torch.tensor([v["entropy"][0] for v in out_eval if v["real"] != "null"]))
+            ave_entropy_null = torch.mean(torch.tensor([torch.mean(torch.tensor(v["entropy"])) for v in out_eval if v["real"] == "null"]))
+            ave_entropy_non_null = torch.mean(torch.tensor([torch.mean(torch.tensor(v["entropy"])) for v in out_eval if v["real"] != "null"]))
+            
+            if (isServer):
+                wandb.log({"ave_entropy_null_first_token": ave_entropy_null_first_token, "ave_entropy_non_null_first_token": ave_entropy_non_null_first_token, "ave_entropy_null": ave_entropy_null, "ave_entropy_non_null": ave_entropy_non_null})
+            else:
+                print(f"ave_entropy_null_first_token: {ave_entropy_null_first_token:.6f}, ave_entropy_non_null_first_token: {ave_entropy_non_null_first_token:.6f}")
+                print(f"ave_entropy_null: {ave_entropy_null:.6f}, ave_entropy_non_null: {ave_entropy_non_null:.6f}")
             # eval on train data
             out_eval = model.model.generate(model.tokenizer, train_loader_small)
             real_dict = {out["id"]: out["real"] for out in out_eval}
