@@ -53,10 +53,10 @@ class Defaults(Parameters):
             real_dict = {out["id"]: out["real"] for out in out_eval}
             pred_dict = {out["id"]: out["pred"] for out in out_eval}
             scores = evaluator.evaluate(real_dict, pred_dict, name)
-            print(scores)
-            # split data into train and test
-            # save_predictions(name, predictions)
-            # save_model(name, model)
+            if (isServer):
+                wandb.log(scores)
+            else:
+                print(scores)
 
 
 Defaults.start()
