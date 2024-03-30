@@ -8,13 +8,22 @@ import numpy as np
 class Evaluator():
     def __init__(self):
         self.scores = {}
+        self.table_path = 'mimic_iv/mimic_iv.sqlite'
+
+    def save_predictions(self, name, pred_dict):
+        pred_dict = {id_: self.post_process_sql(pred_dict[id_]) for id_ in pred_dict}
+        pred_result = self.execute_all(pred_dict, tag='pred')
+
+        if not os.path.exists(os.path.join("predictions", name)):
+            os.makedirs(os.path.join("predictions", name))
+        with open(os.path.join("predictions", name, 'predictions.json'), 'w') as score_file:
+            score_file.write(json.dumps(pred_result))
 
     def evaluate(self, real_dict, pred_dict, name):
-        table_path = 'mimic_iv/mimic_iv.sqlite'
         real_dict = {id_: self.post_process_sql(real_dict[id_]) for id_ in real_dict}
         pred_dict = {id_: self.post_process_sql(pred_dict[id_]) for id_ in pred_dict}
-        real_result = self.execute_all(real_dict, table_path, tag='real')
-        pred_result = self.execute_all(pred_dict, table_path, tag='pred')
+        real_result = self.execute_all(real_dict, tag='real')
+        pred_result = self.execute_all(pred_dict, tag='pred')
         scores = self.calculate_scores(real_result, pred_result, name)
         return scores
 
@@ -33,12 +42,6 @@ class Evaluator():
         }
 
         self.scores = scores_dict
-
-        # save as a json file, check if prediction/name folder exists, otherwise create it
-        if not os.path.exists(os.path.join("predictions", name)):
-            os.makedirs(os.path.join("predictions", name))
-        with open(os.path.join("predictions", name, 'scores.json'), 'w') as score_file:
-            score_file.write(json.dumps(scores_dict))
 
         return scores_dict
 
@@ -98,11 +101,11 @@ class Evaluator():
         else:
             return (key, skip_indicator)
 
-    def execute_all(self, dict, db_path, tag):
+    def execute_all(self, dict, tag):
         exec_result = {}
         for key in dict:
             sql = dict[key]
-            exec_result[key] = self.execute_sql_wrapper(key, sql, db_path, tag)[-1]
+            exec_result[key] = self.execute_sql_wrapper(key, sql, self.table_path, tag)[-1]
         return exec_result
     
     def process_item(self, item):
