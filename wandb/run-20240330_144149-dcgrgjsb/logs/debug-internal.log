@@ -479,3 +479,62 @@ requests.exceptions.HTTPError: 500 Server Error: Internal Server Error for url: 
 2024-03-30 15:08:51,600 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
 2024-03-30 15:08:56,601 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
 2024-03-30 15:09:01,601 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:09:06,602 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:09:11,602 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:09:16,603 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:09:20,799 ERROR   SenderThread:16786 [internal_api.py:execute():373] 500 response executing GraphQL.
+2024-03-30 15:09:20,799 ERROR   SenderThread:16786 [internal_api.py:execute():374] {"errors":[{"message":"An internal error occurred. Please contact support.","path":["createArtifactManifest"]}],"data":{"createArtifactManifest":null}}
+2024-03-30 15:09:21,604 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:09:26,604 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:09:31,605 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:09:36,606 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:09:41,606 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:09:46,607 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:09:51,607 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:09:56,608 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:10:01,609 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:10:06,609 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:10:11,610 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:10:16,610 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:10:21,611 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:10:26,612 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:10:31,612 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:10:36,613 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:10:41,613 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:10:46,614 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:10:51,615 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:10:56,615 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:11:01,616 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:11:06,617 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:11:11,617 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:11:16,618 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:11:21,618 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:11:26,619 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:11:31,619 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:11:36,620 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:11:41,621 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:11:46,621 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:11:51,622 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:11:56,623 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:12:01,624 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:12:06,625 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:12:11,625 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:12:16,626 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:12:21,627 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:12:26,627 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:12:31,628 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:12:36,629 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:12:41,629 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:12:46,630 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:12:51,630 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:12:56,631 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:13:01,631 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:13:06,632 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:13:11,632 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:13:16,633 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:13:21,634 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:13:26,634 DEBUG   HandlerThread:16786 [handler.py:handle_request():146] handle_request: keepalive
+2024-03-30 15:13:36,458 WARNING StreamThr :16786 [internal.py:is_dead():414] Internal process exiting, parent pid 16664 disappeared
+2024-03-30 15:13:36,458 ERROR   StreamThr :16786 [internal.py:wandb_internal():152] Internal process shutdown.
+2024-03-30 15:13:36,531 INFO    WriterThread:16786 [datastore.py:close():296] close: /zhome/ea/9/137501/Desktop/ML_health/ML_health/wandb/run-20240330_144149-dcgrgjsb/run-dcgrgjsb.wandb
+2024-03-30 15:13:36,635 INFO    HandlerThread:16786 [handler.py:finish():866] shutting down handler
