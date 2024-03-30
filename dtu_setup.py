@@ -13,4 +13,5 @@ packages=[
     "seaborn",
     "wandb",
     "transformers",
+    "sentencepiece",
 ],)

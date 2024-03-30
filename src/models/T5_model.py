@@ -51,7 +51,7 @@ class T5Model(nn.Module):
                 logits = logits.cpu() if self.device == "cuda" else logits
                 probs = torch.softmax(logits, dim=2).float()
                 log_probs = torch.log_softmax(logits, dim=2).float()
-                entropies = (torch.sum(probs * log_probs, axis=2) * (-1)).numpy()
+                entropies = (torch.sum(probs * log_probs, axis=2) * (-1)).cpu().numpy()
 
                 # Determine if the current batch is for testing or training.
                 is_test = True
