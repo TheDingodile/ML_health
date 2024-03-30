@@ -29,7 +29,7 @@ class T5Dataset(Dataset):
         is_test=False,
         max_source_length=256, # natural langauge question
         max_target_length=512, # SQL
-        db_id='mimiciii', # NOTE: `mimic_iv` will be used for codabench
+        db_id='mimic_iv', # NOTE: `mimic_iv` will be used for codabench
         tables_file=None,
         exclude_unans=False, # exclude unanswerable questions b/c they have no valid sql.
         random_seed=0,

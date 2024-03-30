@@ -22,3 +22,17 @@ def save_model(name: str, model: Model):
     if not os.path.exists(path):
         os.makedirs(path)
     model.save(os.path.join(path))
+
+def split_data(data, labels, every: int):
+    data_train = []
+    label_train = dict()
+    data_test = []
+    label_test = dict()
+    for i, d in enumerate(data):
+        if i % every == 0:
+            data_test.append(d)
+            label_test[d["id"]] = labels[d["id"]]
+        else:
+            data_train.append(d)
+            label_train[d["id"]] = labels[d["id"]]
+    return data_train, label_train, data_test, label_test
