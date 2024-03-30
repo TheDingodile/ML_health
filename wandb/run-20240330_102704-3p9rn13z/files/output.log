@@ -1,0 +1,14 @@
+You are using the default legacy behaviour of the <class 'transformers.models.t5.tokenization_t5.T5Tokenizer'>. This is expected, and simply means that the `legacy` (previous) behavior will be used so nothing changes for you. If you want to use the new behaviour, set `legacy=False`. This should only be set if you understand what it means, and thoroughly read the reason why this was added as explained in https://github.com/huggingface/transformers/pull/24565
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Traceback (most recent call last):
+  File "/zhome/ea/9/137501/Desktop/ML_health/ML_health/main.py", line 62, in <module>
+    Defaults.start()
+  File "/zhome/ea/9/137501/Desktop/ML_health/project-env/lib/python3.10/site-packages/dtu/__init__.py", line 235, in start
+    cls.run(*args)
+  File "/zhome/ea/9/137501/Desktop/ML_health/ML_health/main.py", line 55, in run
+    scores = evaluator.evaluate(real_dict, pred_dict, name)
+  File "/zhome/ea/9/137501/Desktop/ML_health/ML_health/src/evaluator.py", line 18, in evaluate
+    scores = self.calculate_scores(real_result, pred_result, name)
+  File "/zhome/ea/9/137501/Desktop/ML_health/ML_health/src/evaluator.py", line 36, in calculate_scores
+    with open(os.path.join("predictions", name, 'scores.json'), 'w') as score_file:
+FileNotFoundError: [Errno 2] No such file or directory: 'predictions/test-0/scores.json'
