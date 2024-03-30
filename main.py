@@ -22,12 +22,14 @@ class Defaults(Parameters):
     labels_name: str = "sample_data/train/label.json"
     answer_name: str = "sample_data/train/answer.json"
 
+    prediction_name: str = "sample_data/valid/data.json"
+
     model_type: str = "t5"
 
     batch_size: int = 1
     eval_fraction: int = 4
 
-    def run(self, name: str, eval_fraction: int, isServer: bool, time: int, batch_size: int, model_type:str, data_name:str, labels_name: str, answer_name: str) -> None:
+    def run(self, name: str, eval_fraction: int, isServer: bool, time: int, batch_size: int, model_type:str, data_name:str, labels_name: str, answer_name: str, prediction_name: str) -> None:
         device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         if (isServer):
             wandb.init(project="ML_healthcare", name=name, config={"batch_size": batch_size, "isServer": isServer, "device": str(device)})
@@ -38,6 +40,7 @@ class Defaults(Parameters):
         labels = read_json(labels_name)
         data_train, label_train, data_test, label_test, data_train_small, label_train_small = split_data(data, labels, every=eval_fraction)
         # answer = read_json(answer_name)
+        prediction_data = read_json(prediction_name)["data"]
         dataset_train = T5Dataset(model.tokenizer, data_train, label_train, is_test=False, append_schema_info=True, tables_file="mimic_iv/tables.json")
         train_loader = DataLoader(dataset_train, batch_size=batch_size, collate_fn=dataset_train.collate_fn, shuffle=True)
         dataset_test = T5Dataset(model.tokenizer, data_test, label_test, is_test=False, append_schema_info=True, tables_file="mimic_iv/tables.json")
@@ -45,10 +48,13 @@ class Defaults(Parameters):
         dataset_train_small = T5Dataset(model.tokenizer, data_train_small, label_train_small, is_test=False, append_schema_info=True, tables_file="mimic_iv/tables.json")
         train_loader_small = DataLoader(dataset_train_small, batch_size=batch_size, collate_fn=dataset_train_small.collate_fn, shuffle=False)
 
+        dataset_val = T5Dataset(model.tokenizer, prediction_data, None, is_test=True, append_schema_info=True, tables_file="mimic_iv/tables.json")
+        val_loader = DataLoader(dataset_val, batch_size=batch_size, collate_fn=dataset_val.collate_fn, shuffle=False)
+
         for i in range(1000):
+            
             for j, batch in enumerate(train_loader):
                 train_loss = model.trainer(batch)
-
                 if (isServer):
                     wandb.log({"train_loss": train_loss})
                 else:
@@ -65,16 +71,6 @@ class Defaults(Parameters):
             else:
                 print("eval", scores)
 
-            ave_entropy_null_first_token = torch.mean(torch.tensor([v["entropy"][0] for v in out_eval if v["real"] == "null"]))
-            ave_entropy_non_null_first_token = torch.mean(torch.tensor([v["entropy"][0] for v in out_eval if v["real"] != "null"]))
-            ave_entropy_null = torch.mean(torch.tensor([torch.mean(torch.tensor(v["entropy"])) for v in out_eval if v["real"] == "null"]))
-            ave_entropy_non_null = torch.mean(torch.tensor([torch.mean(torch.tensor(v["entropy"])) for v in out_eval if v["real"] != "null"]))
-            
-            if (isServer):
-                wandb.log({"ave_entropy_null_first_token": ave_entropy_null_first_token, "ave_entropy_non_null_first_token": ave_entropy_non_null_first_token, "ave_entropy_null": ave_entropy_null, "ave_entropy_non_null": ave_entropy_non_null})
-            else:
-                print(f"ave_entropy_null_first_token: {ave_entropy_null_first_token:.6f}, ave_entropy_non_null_first_token: {ave_entropy_non_null_first_token:.6f}")
-                print(f"ave_entropy_null: {ave_entropy_null:.6f}, ave_entropy_non_null: {ave_entropy_non_null:.6f}")
             # eval on train data
             out_eval = model.model.generate(model.tokenizer, train_loader_small)
             real_dict = {out["id"]: out["real"] for out in out_eval}
@@ -85,6 +81,11 @@ class Defaults(Parameters):
                 wandb.log(scores)
             else:
                 print("train", scores)
+
+            # eval on prediction data
+            out_eval = model.model.generate(model.tokenizer, val_loader)
+            pred_dict = {out["id"]: out["pred"] for out in out_eval}
+            evaluator.save_predictions(name, pred_dict)
 
 
 
