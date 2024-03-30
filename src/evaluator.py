@@ -33,6 +33,10 @@ class Evaluator():
         }
 
         self.scores = scores_dict
+
+        # save as a json file, check if prediction/name folder exists, otherwise create it
+        if not os.path.exists(os.path.join("predictions", name)):
+            os.makedirs(os.path.join("predictions", name))
         with open(os.path.join("predictions", name, 'scores.json'), 'w') as score_file:
             score_file.write(json.dumps(scores_dict))
 
