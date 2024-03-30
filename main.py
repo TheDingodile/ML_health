@@ -26,10 +26,10 @@ class Defaults(Parameters):
     batch_size: int = 1
 
     def run(self, name: str, isServer: bool, time: int, batch_size: int, model_type:str, data_name:str, labels_name: str, answer_name: str) -> None:
+        device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         if (isServer):
             wandb.init(project="ML_healthcare", name=name, config={"batch_size": batch_size, "isServer": isServer, "device": str(device)})
         
-        device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         model = Model(model_type)
         evaluator = Evaluator()
         data = read_json(data_name)["data"]
