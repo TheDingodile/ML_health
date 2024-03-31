@@ -3,8 +3,9 @@ import torch.nn as nn
 import torch
 
 class T5Model(nn.Module):
-    def __init__(self, device, model_name):
+    def __init__(self, device, model_name, max_length):
         super().__init__()
+        self.max_length = max_length
         self.device = device
         self.model_name = model_name
         self.network = T5ForConditionalGeneration.from_pretrained(self.model_name).to(device)
@@ -20,7 +21,7 @@ class T5Model(nn.Module):
         return loss.detach().cpu().numpy()
 
     def generate(self, tokenizer, eval_loader):
-        max_length = 512
+        max_length = self.max_length
         num_beams = 1
         num_samples = 1
         # Disable gradient calculations for efficiency, as they are not needed in evaluation.
