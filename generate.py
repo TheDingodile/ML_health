@@ -132,14 +132,26 @@ from main import Defaults, GPU
 #          answer_name="mimic_iv/train/answer.json",
 #          prediction_name="mimic_iv/valid/data.json")
 
+# Defaults(name="null_safety01Large", 
+#          GPU=GPU.a80, 
+#          batch_size=16, 
+#          eval_fraction=50,
+#          null_chance_boundary=0.1,
+#          model_type="t5",
+#          t5_model_name="t5-large",
+#          data_name="mimic_iv/train/data.json",  
+#          labels_name="mimic_iv/train/label.json",
+#          answer_name="mimic_iv/train/answer.json",
+#          prediction_name="mimic_iv/valid/data.json")
 
-Defaults(name="null_safety01Large", 
-         GPU=GPU.a80, 
+
+Defaults(name="log_entropy", 
+         GPU=GPU.v32, 
          batch_size=16, 
          eval_fraction=50,
          null_chance_boundary=0.1,
          model_type="t5",
-         t5_model_name="t5-large",
+         t5_model_name="t5-base",
          data_name="mimic_iv/train/data.json",  
          labels_name="mimic_iv/train/label.json",
          answer_name="mimic_iv/train/answer.json",
