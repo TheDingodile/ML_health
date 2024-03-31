@@ -25,19 +25,21 @@ class Defaults(Parameters):
     prediction_name: str = "sample_data/valid/data.json"
 
     model_type: str = "t5"
+    t5_model_name: str = "t5-large"
 
     batch_size: int = 1
     eval_fraction: int = 4
 
     null_chance_boundary: float = 0.5
+    make_predictions_after: int = 2
 
-    def run(self, name: str, eval_fraction: int, isServer: bool, time: int, batch_size: int, model_type:str, data_name:str, labels_name: str, answer_name: str, prediction_name: str, null_chance_boundary: float) -> None:
+    def run(self, name: str, eval_fraction: int, t5_model_name: str, isServer: bool, make_predictions_after: int, time: int, batch_size: int, model_type:str, data_name:str, labels_name: str, answer_name: str, prediction_name: str, null_chance_boundary: float) -> None:
         device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         tables_file = "mimic_iv/tables.json"
         if (isServer):
             wandb.init(project="ML_healthcare", name=name, config={"batch_size": batch_size, "isServer": isServer, "device": str(device)})
         
-        model = Model(model_type)
+        model = Model(model_type, t5_model_name)
         evaluator = Evaluator()
         data = read_json(data_name)["data"]
         labels = read_json(labels_name)
@@ -87,10 +89,11 @@ class Defaults(Parameters):
             else:
                 print("train", scores)
 
-            # eval on prediction data
-            out_eval = model.model.generate(model.tokenizer, val_loader)
-            pred_dict = {out["id"]: out["pred"] if out["prob_null"] < null_chance_boundary else 'null' for out in out_eval}
-            evaluator.save_predictions(name, pred_dict)
+            if i >= make_predictions_after == 0:
+                # eval on prediction data
+                out_eval = model.model.generate(model.tokenizer, val_loader)
+                pred_dict = {out["id"]: out["pred"] if out["prob_null"] < null_chance_boundary else 'null' for out in out_eval}
+                evaluator.save_predictions(name, pred_dict)
 
 
 

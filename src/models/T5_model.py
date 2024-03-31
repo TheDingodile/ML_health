@@ -3,10 +3,10 @@ import torch.nn as nn
 import torch
 
 class T5Model(nn.Module):
-    def __init__(self, device):
+    def __init__(self, device, model_name):
         super().__init__()
         self.device = device
-        self.model_name = "t5-base"
+        self.model_name = model_name
         self.network = T5ForConditionalGeneration.from_pretrained(self.model_name).to(device)
 
     def trainer(self, input_ids, attention_mask, labels, tokenizer, optimizer):
