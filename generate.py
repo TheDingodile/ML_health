@@ -64,46 +64,68 @@ from main import Defaults, GPU
 #          answer_name="mimic_iv/train/answer.json",
 #          prediction_name="mimic_iv/valid/data.json")
 
-Defaults(name="null_safety01", 
+# Defaults(name="null_safety01", 
+#          GPU=GPU.v32, 
+#          batch_size=16, 
+#          eval_fraction=50,
+#          null_chance_boundary=0.1,
+#          model_type="t5",
+#          data_name="mimic_iv/train/data.json",  
+#          labels_name="mimic_iv/train/label.json",
+#          answer_name="mimic_iv/train/answer.json",
+#          prediction_name="mimic_iv/valid/data.json")
+
+# Defaults(name="null_safety001", 
+#          GPU=GPU.v32, 
+#          batch_size=16, 
+#          eval_fraction=50,
+#          null_chance_boundary=0.01,
+#          model_type="t5",
+#          data_name="mimic_iv/train/data.json",  
+#          labels_name="mimic_iv/train/label.json",
+#          answer_name="mimic_iv/train/answer.json",
+#          prediction_name="mimic_iv/valid/data.json")
+
+# Defaults(name="null_safety0001", 
+#          GPU=GPU.v32, 
+#          batch_size=16, 
+#          eval_fraction=50,
+#          null_chance_boundary=0.001,
+#          model_type="t5",
+#          data_name="mimic_iv/train/data.json",  
+#          labels_name="mimic_iv/train/label.json",
+#          answer_name="mimic_iv/train/answer.json",
+#          prediction_name="mimic_iv/valid/data.json")
+
+
+
+# Defaults(name="null_safety025", 
+#          GPU=GPU.v32, 
+#          batch_size=16, 
+#          eval_fraction=50,
+#          null_chance_boundary=0.25,
+#          model_type="t5",
+#          data_name="mimic_iv/train/data.json",  
+#          labels_name="mimic_iv/train/label.json",
+#          answer_name="mimic_iv/train/answer.json",
+#          prediction_name="mimic_iv/valid/data.json")
+
+Defaults(name="null_safety000001", 
          GPU=GPU.v32, 
          batch_size=16, 
          eval_fraction=50,
-         null_chance_boundary=0.1,
+         null_chance_boundary=0.00001,
          model_type="t5",
          data_name="mimic_iv/train/data.json",  
          labels_name="mimic_iv/train/label.json",
          answer_name="mimic_iv/train/answer.json",
          prediction_name="mimic_iv/valid/data.json")
 
-Defaults(name="null_safety001", 
-         GPU=GPU.v32, 
+Defaults(name="null_safety00001", 
+         GPU=GPU.a80, 
          batch_size=16, 
          eval_fraction=50,
-         null_chance_boundary=0.01,
-         model_type="t5",
-         data_name="mimic_iv/train/data.json",  
-         labels_name="mimic_iv/train/label.json",
-         answer_name="mimic_iv/train/answer.json",
-         prediction_name="mimic_iv/valid/data.json")
-
-Defaults(name="null_safety0001", 
-         GPU=GPU.v32, 
-         batch_size=16, 
-         eval_fraction=50,
-         null_chance_boundary=0.001,
-         model_type="t5",
-         data_name="mimic_iv/train/data.json",  
-         labels_name="mimic_iv/train/label.json",
-         answer_name="mimic_iv/train/answer.json",
-         prediction_name="mimic_iv/valid/data.json")
-
-
-
-Defaults(name="null_safety025", 
-         GPU=GPU.v32, 
-         batch_size=16, 
-         eval_fraction=50,
-         null_chance_boundary=0.25,
+         null_chance_boundary=0.0001,
          model_type="t5",
          data_name="mimic_iv/train/data.json",  
          labels_name="mimic_iv/train/label.json",
