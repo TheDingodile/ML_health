@@ -52,6 +52,8 @@ class T5Model(nn.Module):
                 probs = torch.softmax(logits, dim=2).float()
                 log_probs = torch.log_softmax(logits, dim=2).float()
                 entropies = (torch.sum(probs * log_probs, axis=2) * (-1)).cpu().numpy()
+                null_voca_idx = 206
+                prob_null = probs[:, 0, null_voca_idx]
 
                 # Determine if the current batch is for testing or training.
                 is_test = True
@@ -84,6 +86,9 @@ class T5Model(nn.Module):
                         "question": tokenizer.decode(source_ids[idx], skip_special_tokens=True),
                         "pred": tokenizer.decode(pred_list[idx], skip_special_tokens=True),
                         "entropy": entropy_list[idx],
+                        "source_ids": source_ids[idx].cpu().numpy().tolist(),
+                        "pred_ids": pred_list[idx].cpu().numpy().tolist(),
+                        "prob_null": prob_null[idx].cpu().numpy().tolist(),
                     }
 
                     # Include the real target output if it's training data.
