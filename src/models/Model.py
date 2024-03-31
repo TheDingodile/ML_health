@@ -6,16 +6,16 @@ from transformers import T5Tokenizer
 from torch import Tensor
 
 class Model(nn.Module):
-    def __init__(self, model_type: str = "dummy", tokenizer=None):
+    def __init__(self, model_type: str, t5_model_name: str):
         super(Model, self).__init__()
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-        self.model_name = "t5-base"
+        self.model_name = t5_model_name
         self.tokenizer = T5Tokenizer.from_pretrained(self.model_name)
         if model_type == "dummy":
             self.model = Dummymodel()
             self.optimizer = None
         elif model_type == "t5":
-            self.model = T5Model(self.device)
+            self.model = T5Model(self.device, self.model_name)
             self.optimizer = torch.optim.Adam(self.model.parameters(), lr=0.001)
 
     def trainer(self, batch: dict[str: Tensor]):

@@ -110,26 +110,37 @@ from main import Defaults, GPU
 #          answer_name="mimic_iv/train/answer.json",
 #          prediction_name="mimic_iv/valid/data.json")
 
-Defaults(name="null_safety000001", 
-         GPU=GPU.v32, 
-         batch_size=16, 
-         eval_fraction=50,
-         null_chance_boundary=0.00001,
-         model_type="t5",
-         data_name="mimic_iv/train/data.json",  
-         labels_name="mimic_iv/train/label.json",
-         answer_name="mimic_iv/train/answer.json",
-         prediction_name="mimic_iv/valid/data.json")
+# Defaults(name="null_safety000001", 
+#          GPU=GPU.v32, 
+#          batch_size=16, 
+#          eval_fraction=50,
+#          null_chance_boundary=0.00001,
+#          model_type="t5",
+#          data_name="mimic_iv/train/data.json",  
+#          labels_name="mimic_iv/train/label.json",
+#          answer_name="mimic_iv/train/answer.json",
+#          prediction_name="mimic_iv/valid/data.json")
 
-Defaults(name="null_safety00001", 
+# Defaults(name="null_safety00001", 
+#          GPU=GPU.a80, 
+#          batch_size=16, 
+#          eval_fraction=50,
+#          null_chance_boundary=0.0001,
+#          model_type="t5",
+#          data_name="mimic_iv/train/data.json",  
+#          labels_name="mimic_iv/train/label.json",
+#          answer_name="mimic_iv/train/answer.json",
+#          prediction_name="mimic_iv/valid/data.json")
+
+
+Defaults(name="null_safety01Large", 
          GPU=GPU.a80, 
          batch_size=16, 
          eval_fraction=50,
-         null_chance_boundary=0.0001,
+         null_chance_boundary=0.1,
          model_type="t5",
+         t5_model_name="t5-large",
          data_name="mimic_iv/train/data.json",  
          labels_name="mimic_iv/train/label.json",
          answer_name="mimic_iv/train/answer.json",
          prediction_name="mimic_iv/valid/data.json")
-
-
