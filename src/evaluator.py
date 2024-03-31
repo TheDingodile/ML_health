@@ -18,8 +18,10 @@ class Evaluator():
             os.makedirs(os.path.join("predictions", name))
         with open(os.path.join("predictions", name, 'predictions.json'), 'w') as score_file:
             score_file.write(json.dumps(pred_result))
-        # with open(os.path.join("predictions", name, 'out_eval.json'), 'w') as score_file:
-        #     score_file.write(json.dumps(out_eval))
+
+        if out_eval is not None:
+            with open(os.path.join("predictions", name, 'out_eval.json'), 'w') as score_file:
+                score_file.write(json.dumps(out_eval))
 
     def evaluate(self, real_dict, pred_dict, name):
         real_dict = {id_: self.post_process_sql(real_dict[id_]) for id_ in real_dict}

@@ -93,7 +93,7 @@ class Defaults(Parameters):
                 # eval on prediction data
                 out_eval = model.model.generate(model.tokenizer, val_loader)
                 pred_dict = {out["id"]: out["pred"] if out["prob_null"] < null_chance_boundary else 'null' for out in out_eval}
-                evaluator.save_predictions(name, pred_dict)
+                evaluator.save_predictions(name, pred_dict, out_eval)
 
 
 
