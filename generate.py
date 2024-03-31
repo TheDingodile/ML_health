@@ -144,7 +144,6 @@ from main import Defaults, GPU
 #          answer_name="mimic_iv/train/answer.json",
 #          prediction_name="mimic_iv/valid/data.json")
 
-
 # Defaults(name="log_entropy", 
 #          GPU=GPU.v32, 
 #          batch_size=16, 
@@ -157,26 +156,49 @@ from main import Defaults, GPU
 #          answer_name="mimic_iv/train/answer.json",
 #          prediction_name="mimic_iv/valid/data.json")
 
+# Defaults(name="LargeTest_fix", 
+#          GPU=GPU.v32, 
+#          batch_size=4, 
+#          eval_fraction=50,
+#          null_chance_boundary=0.1,
+#          model_type="t5",
+#          t5_model_name="t5-large",
+#          data_name="mimic_iv/train/data.json",  
+#          labels_name="mimic_iv/train/label.json",
+#          answer_name="mimic_iv/train/answer.json",
+#          prediction_name="mimic_iv/valid/data.json")
 
-Defaults(name="LargeTest_fix", 
+# Defaults(name="LargeTesta40", 
+#          GPU=GPU.a40, 
+#          batch_size=8, 
+#          eval_fraction=50,
+#          null_chance_boundary=0.1,
+#          model_type="t5",
+#          t5_model_name="t5-large",
+#          data_name="mimic_iv/train/data.json",  
+#          labels_name="mimic_iv/train/label.json",
+#          answer_name="mimic_iv/train/answer.json",
+#          prediction_name="mimic_iv/valid/data.json")
+
+Defaults(name="save_predictions", 
          GPU=GPU.v32, 
-         batch_size=4, 
+         batch_size=16, 
          eval_fraction=50,
-         null_chance_boundary=0.1,
+         null_chance_boundary=1,
          model_type="t5",
-         t5_model_name="t5-large",
+         t5_model_name="t5-base",
          data_name="mimic_iv/train/data.json",  
          labels_name="mimic_iv/train/label.json",
          answer_name="mimic_iv/train/answer.json",
          prediction_name="mimic_iv/valid/data.json")
 
-Defaults(name="LargeTesta40", 
-         GPU=GPU.a40, 
-         batch_size=8, 
+Defaults(name="save_predictions2", 
+         GPU=GPU.v32, 
+         batch_size=16, 
          eval_fraction=50,
-         null_chance_boundary=0.1,
+         null_chance_boundary=1,
          model_type="t5",
-         t5_model_name="t5-large",
+         t5_model_name="t5-base",
          data_name="mimic_iv/train/data.json",  
          labels_name="mimic_iv/train/label.json",
          answer_name="mimic_iv/train/answer.json",
