@@ -29,8 +29,11 @@ class Defaults(Parameters):
     batch_size: int = 1
     eval_fraction: int = 4
 
-    def run(self, name: str, eval_fraction: int, isServer: bool, time: int, batch_size: int, model_type:str, data_name:str, labels_name: str, answer_name: str, prediction_name: str) -> None:
+    null_chance_boundary: float = 0.5
+
+    def run(self, name: str, eval_fraction: int, isServer: bool, time: int, batch_size: int, model_type:str, data_name:str, labels_name: str, answer_name: str, prediction_name: str, null_chance_boundary: float) -> None:
         device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        tables_file = "mimic_iv/tables.json"
         if (isServer):
             wandb.init(project="ML_healthcare", name=name, config={"batch_size": batch_size, "isServer": isServer, "device": str(device)})
         
@@ -41,14 +44,14 @@ class Defaults(Parameters):
         data_train, label_train, data_test, label_test, data_train_small, label_train_small = split_data(data, labels, every=eval_fraction)
         # answer = read_json(answer_name)
         prediction_data = read_json(prediction_name)["data"]
-        dataset_train = T5Dataset(model.tokenizer, data_train, label_train, is_test=False, append_schema_info=True, tables_file="mimic_iv/tables.json")
+        dataset_train = T5Dataset(model.tokenizer, data_train, label_train, is_test=False, append_schema_info=True, tables_file=tables_file)
         train_loader = DataLoader(dataset_train, batch_size=batch_size, collate_fn=dataset_train.collate_fn, shuffle=True)
-        dataset_test = T5Dataset(model.tokenizer, data_test, label_test, is_test=False, append_schema_info=True, tables_file="mimic_iv/tables.json")
+        dataset_test = T5Dataset(model.tokenizer, data_test, label_test, is_test=False, append_schema_info=True, tables_file=tables_file)
         test_loader = DataLoader(dataset_test, batch_size=batch_size, collate_fn=dataset_test.collate_fn, shuffle=False)
-        dataset_train_small = T5Dataset(model.tokenizer, data_train_small, label_train_small, is_test=False, append_schema_info=True, tables_file="mimic_iv/tables.json")
+        dataset_train_small = T5Dataset(model.tokenizer, data_train_small, label_train_small, is_test=False, append_schema_info=True, tables_file=tables_file)
         train_loader_small = DataLoader(dataset_train_small, batch_size=batch_size, collate_fn=dataset_train_small.collate_fn, shuffle=False)
 
-        dataset_val = T5Dataset(model.tokenizer, prediction_data, None, is_test=True, append_schema_info=True, tables_file="mimic_iv/tables.json")
+        dataset_val = T5Dataset(model.tokenizer, prediction_data, None, is_test=True, append_schema_info=True, tables_file=tables_file)
         val_loader = DataLoader(dataset_val, batch_size=batch_size, collate_fn=dataset_val.collate_fn, shuffle=False)
 
         for i in range(1000):
@@ -64,6 +67,7 @@ class Defaults(Parameters):
             out_eval = model.model.generate(model.tokenizer, test_loader)
             real_dict = {out["id"]: out["real"] for out in out_eval}
             pred_dict = {out["id"]: out["pred"] for out in out_eval}
+            pred_dict = {out["id"]: out["pred"] if out["prob_null"] < null_chance_boundary else 'null' for out in out_eval}
             scores = evaluator.evaluate(real_dict, pred_dict, name)
             if (isServer):
                 scores = {f"eval_{k}": v for k, v in scores.items()}
@@ -75,6 +79,7 @@ class Defaults(Parameters):
             out_eval = model.model.generate(model.tokenizer, train_loader_small)
             real_dict = {out["id"]: out["real"] for out in out_eval}
             pred_dict = {out["id"]: out["pred"] for out in out_eval}
+            pred_dict = {out["id"]: out["pred"] if out["prob_null"] < null_chance_boundary else 'null' for out in out_eval}
             scores = evaluator.evaluate(real_dict, pred_dict, name)
             if (isServer):
                 scores = {f"train_{k}": v for k, v in scores.items()}
@@ -84,7 +89,7 @@ class Defaults(Parameters):
 
             # eval on prediction data
             out_eval = model.model.generate(model.tokenizer, val_loader)
-            pred_dict = {out["id"]: out["pred"] for out in out_eval}
+            pred_dict = {out["id"]: out["pred"] if out["prob_null"] < null_chance_boundary else 'null' for out in out_eval}
             evaluator.save_predictions(name, pred_dict)
 
 

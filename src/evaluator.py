@@ -10,7 +10,7 @@ class Evaluator():
         self.scores = {}
         self.table_path = 'mimic_iv/mimic_iv.sqlite'
 
-    def save_predictions(self, name, pred_dict):
+    def save_predictions(self, name, pred_dict, out_eval=None):
         pred_dict = {id_: self.post_process_sql(pred_dict[id_]) for id_ in pred_dict}
         pred_result = self.execute_all(pred_dict, tag='pred')
 
@@ -18,6 +18,8 @@ class Evaluator():
             os.makedirs(os.path.join("predictions", name))
         with open(os.path.join("predictions", name, 'predictions.json'), 'w') as score_file:
             score_file.write(json.dumps(pred_result))
+        # with open(os.path.join("predictions", name, 'out_eval.json'), 'w') as score_file:
+        #     score_file.write(json.dumps(out_eval))
 
     def evaluate(self, real_dict, pred_dict, name):
         real_dict = {id_: self.post_process_sql(real_dict[id_]) for id_ in real_dict}
