@@ -3525,3 +3525,34 @@
 2024-03-31 10:47:34,902 INFO    SenderThread:17418 [sender.py:_save_file():1390] saving file wandb-summary.json with policy end
 2024-03-31 10:47:35,415 INFO    Thread-12 :17418 [dir_watcher.py:_on_file_modified():288] file/dir modified: /zhome/ea/9/137501/Desktop/ML_health/ML_health/wandb/run-20240331_102941-07htqxim/files/wandb-summary.json
 2024-03-31 10:47:35,902 DEBUG   HandlerThread:17418 [handler.py:handle_request():146] handle_request: status_report
+2024-03-31 10:47:40,903 DEBUG   HandlerThread:17418 [handler.py:handle_request():146] handle_request: status_report
+2024-03-31 10:47:41,958 DEBUG   SenderThread:17418 [sender.py:send():379] send: stats
+2024-03-31 10:47:42,137 DEBUG   HandlerThread:17418 [handler.py:handle_request():146] handle_request: internal_messages
+2024-03-31 10:47:42,157 DEBUG   HandlerThread:17418 [handler.py:handle_request():146] handle_request: stop_status
+2024-03-31 10:47:42,157 DEBUG   SenderThread:17418 [sender.py:send_request():406] send_request: stop_status
+2024-03-31 10:47:46,342 DEBUG   HandlerThread:17418 [handler.py:handle_request():146] handle_request: status_report
+2024-03-31 10:47:51,343 DEBUG   HandlerThread:17418 [handler.py:handle_request():146] handle_request: status_report
+2024-03-31 10:47:56,344 DEBUG   HandlerThread:17418 [handler.py:handle_request():146] handle_request: status_report
+2024-03-31 10:47:57,137 DEBUG   HandlerThread:17418 [handler.py:handle_request():146] handle_request: internal_messages
+2024-03-31 10:47:57,157 DEBUG   HandlerThread:17418 [handler.py:handle_request():146] handle_request: stop_status
+2024-03-31 10:47:57,157 DEBUG   SenderThread:17418 [sender.py:send_request():406] send_request: stop_status
+2024-03-31 10:48:01,383 DEBUG   HandlerThread:17418 [handler.py:handle_request():146] handle_request: status_report
+2024-03-31 10:48:06,384 DEBUG   HandlerThread:17418 [handler.py:handle_request():146] handle_request: status_report
+2024-03-31 10:48:11,384 DEBUG   HandlerThread:17418 [handler.py:handle_request():146] handle_request: status_report
+2024-03-31 10:48:11,959 DEBUG   SenderThread:17418 [sender.py:send():379] send: stats
+2024-03-31 10:48:12,137 DEBUG   HandlerThread:17418 [handler.py:handle_request():146] handle_request: internal_messages
+2024-03-31 10:48:12,157 DEBUG   HandlerThread:17418 [handler.py:handle_request():146] handle_request: stop_status
+2024-03-31 10:48:12,157 DEBUG   SenderThread:17418 [sender.py:send_request():406] send_request: stop_status
+2024-03-31 10:48:16,404 DEBUG   HandlerThread:17418 [handler.py:handle_request():146] handle_request: status_report
+2024-03-31 10:48:21,405 DEBUG   HandlerThread:17418 [handler.py:handle_request():146] handle_request: status_report
+2024-03-31 10:48:26,406 DEBUG   HandlerThread:17418 [handler.py:handle_request():146] handle_request: status_report
+2024-03-31 10:48:27,137 DEBUG   HandlerThread:17418 [handler.py:handle_request():146] handle_request: internal_messages
+2024-03-31 10:48:27,157 DEBUG   HandlerThread:17418 [handler.py:handle_request():146] handle_request: stop_status
+2024-03-31 10:48:27,158 DEBUG   SenderThread:17418 [sender.py:send_request():406] send_request: stop_status
+2024-03-31 10:48:31,149 DEBUG   HandlerThread:17418 [handler.py:handle_request():146] handle_request: partial_history
+2024-03-31 10:48:31,150 DEBUG   SenderThread:17418 [sender.py:send():379] send: history
+2024-03-31 10:48:31,150 DEBUG   SenderThread:17418 [sender.py:send_request():406] send_request: summary_record
+2024-03-31 10:48:31,152 INFO    SenderThread:17418 [sender.py:_save_file():1390] saving file wandb-summary.json with policy end
+2024-03-31 10:48:31,564 INFO    Thread-12 :17418 [dir_watcher.py:_on_file_modified():288] file/dir modified: /zhome/ea/9/137501/Desktop/ML_health/ML_health/wandb/run-20240331_102941-07htqxim/files/wandb-summary.json
+2024-03-31 10:48:32,153 DEBUG   HandlerThread:17418 [handler.py:handle_request():146] handle_request: status_report
+2024-03-31 10:48:37,153 DEBUG   HandlerThread:17418 [handler.py:handle_request():146] handle_request: status_report
