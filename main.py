@@ -89,7 +89,7 @@ class Defaults(Parameters):
             else:
                 print("train", scores)
 
-            if i >= make_predictions_after == 0:
+            if i >= make_predictions_after:
                 # eval on prediction data
                 out_eval = model.model.generate(model.tokenizer, val_loader)
                 pred_dict = {out["id"]: out["pred"] if out["prob_null"] < null_chance_boundary else 'null' for out in out_eval}
