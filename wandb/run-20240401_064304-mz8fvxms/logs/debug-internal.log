@@ -5165,3 +5165,4 @@
 2024-04-01 07:05:50,728 DEBUG   HandlerThread:6390 [handler.py:handle_request():146] handle_request: internal_messages
 2024-04-01 07:05:50,775 DEBUG   HandlerThread:6390 [handler.py:handle_request():146] handle_request: stop_status
 2024-04-01 07:05:50,776 DEBUG   SenderThread:6390 [sender.py:send_request():406] send_request: stop_status
+2024-04-01 07:05:54,953 DEBUG   HandlerThread:6390 [handler.py:handle_request():146] handle_request: status_report

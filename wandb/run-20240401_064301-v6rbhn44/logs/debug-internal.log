@@ -5107,3 +5107,12 @@
 2024-04-01 07:05:36,349 DEBUG   HandlerThread:7943 [handler.py:handle_request():146] handle_request: status_report
 2024-04-01 07:05:41,351 DEBUG   HandlerThread:7943 [handler.py:handle_request():146] handle_request: status_report
 2024-04-01 07:05:46,352 DEBUG   HandlerThread:7943 [handler.py:handle_request():146] handle_request: status_report
+2024-04-01 07:05:50,083 DEBUG   HandlerThread:7943 [handler.py:handle_request():146] handle_request: internal_messages
+2024-04-01 07:05:50,084 DEBUG   HandlerThread:7943 [handler.py:handle_request():146] handle_request: stop_status
+2024-04-01 07:05:50,086 DEBUG   SenderThread:7943 [sender.py:send_request():406] send_request: stop_status
+2024-04-01 07:05:50,383 DEBUG   HandlerThread:7943 [handler.py:handle_request():146] handle_request: partial_history
+2024-04-01 07:05:50,385 DEBUG   SenderThread:7943 [sender.py:send():379] send: history
+2024-04-01 07:05:50,385 DEBUG   SenderThread:7943 [sender.py:send_request():406] send_request: summary_record
+2024-04-01 07:05:50,388 INFO    SenderThread:7943 [sender.py:_save_file():1390] saving file wandb-summary.json with policy end
+2024-04-01 07:05:50,937 INFO    Thread-12 :7943 [dir_watcher.py:_on_file_modified():288] file/dir modified: /zhome/ea/9/137501/Desktop/ML_health/ML_health/wandb/run-20240401_064301-v6rbhn44/files/wandb-summary.json
+2024-04-01 07:05:51,390 DEBUG   HandlerThread:7943 [handler.py:handle_request():146] handle_request: status_report
