@@ -1,0 +1,194 @@
+2024-04-01 07:29:32,921 INFO    StreamThr :30000 [internal.py:wandb_internal():86] W&B internal server running at pid: 30000, started at: 2024-04-01 07:29:32.919693
+2024-04-01 07:29:32,922 DEBUG   HandlerThread:30000 [handler.py:handle_request():146] handle_request: status
+2024-04-01 07:29:32,930 INFO    WriterThread:30000 [datastore.py:open_for_write():87] open: /zhome/ea/9/137501/Desktop/ML_health/ML_health/wandb/run-20240401_072932-zcu2dn4s/run-zcu2dn4s.wandb
+2024-04-01 07:29:32,933 DEBUG   SenderThread:30000 [sender.py:send():379] send: header
+2024-04-01 07:29:32,950 DEBUG   SenderThread:30000 [sender.py:send():379] send: run
+2024-04-01 07:29:33,385 INFO    SenderThread:30000 [dir_watcher.py:__init__():211] watching files in: /zhome/ea/9/137501/Desktop/ML_health/ML_health/wandb/run-20240401_072932-zcu2dn4s/files
+2024-04-01 07:29:33,386 INFO    SenderThread:30000 [sender.py:_start_run_threads():1124] run started: zcu2dn4s with start time 1711949372.921805
+2024-04-01 07:29:33,403 DEBUG   HandlerThread:30000 [handler.py:handle_request():146] handle_request: check_version
+2024-04-01 07:29:33,404 DEBUG   SenderThread:30000 [sender.py:send_request():406] send_request: check_version
+2024-04-01 07:29:33,521 DEBUG   HandlerThread:30000 [handler.py:handle_request():146] handle_request: run_start
+2024-04-01 07:29:33,551 DEBUG   HandlerThread:30000 [system_info.py:__init__():26] System info init
+2024-04-01 07:29:33,551 DEBUG   HandlerThread:30000 [system_info.py:__init__():41] System info init done
+2024-04-01 07:29:33,551 INFO    HandlerThread:30000 [system_monitor.py:start():194] Starting system monitor
+2024-04-01 07:29:33,552 INFO    SystemMonitor:30000 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-04-01 07:29:33,552 INFO    HandlerThread:30000 [system_monitor.py:probe():214] Collecting system info
+2024-04-01 07:29:33,552 INFO    SystemMonitor:30000 [interfaces.py:start():190] Started cpu monitoring
+2024-04-01 07:29:33,553 INFO    SystemMonitor:30000 [interfaces.py:start():190] Started disk monitoring
+2024-04-01 07:29:33,553 INFO    SystemMonitor:30000 [interfaces.py:start():190] Started gpu monitoring
+2024-04-01 07:29:33,554 INFO    SystemMonitor:30000 [interfaces.py:start():190] Started memory monitoring
+2024-04-01 07:29:33,555 INFO    SystemMonitor:30000 [interfaces.py:start():190] Started network monitoring
+2024-04-01 07:29:33,562 DEBUG   HandlerThread:30000 [system_info.py:probe():150] Probing system
+2024-04-01 07:29:33,566 DEBUG   HandlerThread:30000 [system_info.py:_probe_git():135] Probing git
+2024-04-01 07:29:33,583 DEBUG   HandlerThread:30000 [system_info.py:_probe_git():143] Probing git done
+2024-04-01 07:29:33,583 DEBUG   HandlerThread:30000 [system_info.py:probe():198] Probing system done
+2024-04-01 07:29:33,583 DEBUG   HandlerThread:30000 [system_monitor.py:probe():223] {'os': 'Linux-5.4.268-1.el7.elrepo.x86_64-x86_64-with-glibc2.17', 'python': '3.10.7', 'heartbeatAt': '2024-04-01T05:29:33.562474', 'startedAt': '2024-04-01T05:29:32.890095', 'docker': None, 'cuda': None, 'args': ('-name', 'Ensemble5-0', '-time', '82800', '-data_name', 'mimic_iv/train/data.json', '-labels_name', 'mimic_iv/train/label.json', '-answer_name', 'mimic_iv/train/answer.json', '-prediction_name', 'mimic_iv/valid/data.json', '-model_type', 't5', '-t5_model_name', 't5-base', '-batch_size', '16', '-eval_fraction', '25', '-null_chance_boundary', '1.0', '-make_predictions_after', '3', '-lr', '0.001', '-max_length_source', '512', '-max_length_target', '512', '-ID', '0'), 'state': 'running', 'program': '/zhome/ea/9/137501/Desktop/ML_health/ML_health/main.py', 'codePathLocal': 'main.py', 'codePath': 'main.py', 'git': {'remote': 'https://github.com/TheDingodile/ML_health.git', 'commit': '8e5dd0139bb07d775f57abd72657097fbc97f915'}, 'email': 'jakob@3esser.dk', 'root': '/zhome/ea/9/137501/Desktop/ML_health/ML_health', 'host': 'n-62-20-12', 'username': 's183914', 'executable': '/zhome/ea/9/137501/Desktop/ML_health/project-env/bin/python', 'cpu_count': 32, 'cpu_count_logical': 32, 'cpu_freq': {'current': 3124.4863750000004, 'min': 0.0, 'max': 0.0}, 'cpu_freq_per_core': [{'current': 3410.614, 'min': 0.0, 'max': 0.0}, {'current': 3064.582, 'min': 0.0, 'max': 0.0}, {'current': 3190.676, 'min': 0.0, 'max': 0.0}, {'current': 3098.673, 'min': 0.0, 'max': 0.0}, {'current': 3394.433, 'min': 0.0, 'max': 0.0}, {'current': 3397.598, 'min': 0.0, 'max': 0.0}, {'current': 3381.291, 'min': 0.0, 'max': 0.0}, {'current': 3412.485, 'min': 0.0, 'max': 0.0}, {'current': 3398.209, 'min': 0.0, 'max': 0.0}, {'current': 3417.491, 'min': 0.0, 'max': 0.0}, {'current': 3227.071, 'min': 0.0, 'max': 0.0}, {'current': 3315.033, 'min': 0.0, 'max': 0.0}, {'current': 3288.55, 'min': 0.0, 'max': 0.0}, {'current': 3292.546, 'min': 0.0, 'max': 0.0}, {'current': 3242.414, 'min': 0.0, 'max': 0.0}, {'current': 2708.995, 'min': 0.0, 'max': 0.0}, {'current': 3443.088, 'min': 0.0, 'max': 0.0}, {'current': 3638.046, 'min': 0.0, 'max': 0.0}, {'current': 3102.321, 'min': 0.0, 'max': 0.0}, {'current': 2853.571, 'min': 0.0, 'max': 0.0}, {'current': 2693.686, 'min': 0.0, 'max': 0.0}, {'current': 2707.78, 'min': 0.0, 'max': 0.0}, {'current': 2689.45, 'min': 0.0, 'max': 0.0}, {'current': 2704.846, 'min': 0.0, 'max': 0.0}, {'current': 3588.689, 'min': 0.0, 'max': 0.0}, {'current': 2853.275, 'min': 0.0, 'max': 0.0}, {'current': 2976.478, 'min': 0.0, 'max': 0.0}, {'current': 2789.969, 'min': 0.0, 'max': 0.0}, {'current': 3223.649, 'min': 0.0, 'max': 0.0}, {'current': 3019.273, 'min': 0.0, 'max': 0.0}, {'current': 2711.901, 'min': 0.0, 'max': 0.0}, {'current': 2746.881, 'min': 0.0, 'max': 0.0}], 'disk': {'/': {'total': 71.9168586730957, 'used': 11.721240997314453}}, 'gpu': 'Tesla V100-SXM2-32GB', 'gpu_count': 1, 'gpu_devices': [{'name': 'Tesla V100-SXM2-32GB', 'memory_total': 34359738368}], 'memory': {'total': 377.5543403625488}}
+2024-04-01 07:29:33,583 INFO    HandlerThread:30000 [system_monitor.py:probe():224] Finished collecting system info
+2024-04-01 07:29:33,583 INFO    HandlerThread:30000 [system_monitor.py:probe():227] Publishing system info
+2024-04-01 07:29:33,587 INFO    HandlerThread:30000 [system_monitor.py:probe():229] Finished publishing system info
+2024-04-01 07:29:33,594 DEBUG   SenderThread:30000 [sender.py:send():379] send: files
+2024-04-01 07:29:33,594 INFO    SenderThread:30000 [sender.py:_save_file():1390] saving file wandb-metadata.json with policy now
+2024-04-01 07:29:33,775 DEBUG   HandlerThread:30000 [handler.py:handle_request():146] handle_request: python_packages
+2024-04-01 07:29:33,775 DEBUG   SenderThread:30000 [sender.py:send_request():406] send_request: python_packages
+2024-04-01 07:29:33,777 DEBUG   HandlerThread:30000 [handler.py:handle_request():146] handle_request: stop_status
+2024-04-01 07:29:33,777 DEBUG   HandlerThread:30000 [handler.py:handle_request():146] handle_request: internal_messages
+2024-04-01 07:29:33,778 DEBUG   SenderThread:30000 [sender.py:send():379] send: telemetry
+2024-04-01 07:29:33,778 DEBUG   SenderThread:30000 [sender.py:send_request():406] send_request: stop_status
+2024-04-01 07:29:34,277 INFO    wandb-upload_0:30000 [upload_job.py:push():131] Uploaded file /tmp/tmp95br5f93wandb/7lv3jzft-wandb-metadata.json
+2024-04-01 07:29:34,388 INFO    Thread-12 :30000 [dir_watcher.py:_on_file_created():271] file/dir created: /zhome/ea/9/137501/Desktop/ML_health/ML_health/wandb/run-20240401_072932-zcu2dn4s/files/wandb-metadata.json
+2024-04-01 07:29:34,388 INFO    Thread-12 :30000 [dir_watcher.py:_on_file_created():271] file/dir created: /zhome/ea/9/137501/Desktop/ML_health/ML_health/wandb/run-20240401_072932-zcu2dn4s/files/requirements.txt
+2024-04-01 07:29:35,389 INFO    Thread-12 :30000 [dir_watcher.py:_on_file_created():271] file/dir created: /zhome/ea/9/137501/Desktop/ML_health/ML_health/wandb/run-20240401_072932-zcu2dn4s/files/output.log
+2024-04-01 07:29:37,426 INFO    Thread-12 :30000 [dir_watcher.py:_on_file_modified():288] file/dir modified: /zhome/ea/9/137501/Desktop/ML_health/ML_health/wandb/run-20240401_072932-zcu2dn4s/files/output.log
+2024-04-01 07:29:38,599 DEBUG   HandlerThread:30000 [handler.py:handle_request():146] handle_request: status_report
+2024-04-01 07:29:43,600 DEBUG   HandlerThread:30000 [handler.py:handle_request():146] handle_request: status_report
+2024-04-01 07:29:48,601 DEBUG   HandlerThread:30000 [handler.py:handle_request():146] handle_request: status_report
+2024-04-01 07:29:48,824 DEBUG   HandlerThread:30000 [handler.py:handle_request():146] handle_request: stop_status
+2024-04-01 07:29:48,825 DEBUG   SenderThread:30000 [sender.py:send_request():406] send_request: stop_status
+2024-04-01 07:29:48,845 DEBUG   HandlerThread:30000 [handler.py:handle_request():146] handle_request: internal_messages
+2024-04-01 07:29:54,058 DEBUG   HandlerThread:30000 [handler.py:handle_request():146] handle_request: status_report
+2024-04-01 07:29:59,059 DEBUG   HandlerThread:30000 [handler.py:handle_request():146] handle_request: status_report
+2024-04-01 07:30:01,635 DEBUG   HandlerThread:30000 [handler.py:handle_request():146] handle_request: partial_history
+2024-04-01 07:30:01,636 DEBUG   SenderThread:30000 [sender.py:send():379] send: history
+2024-04-01 07:30:01,636 DEBUG   SenderThread:30000 [sender.py:send_request():406] send_request: summary_record
+2024-04-01 07:30:01,640 INFO    SenderThread:30000 [sender.py:_save_file():1390] saving file wandb-summary.json with policy end
+2024-04-01 07:30:02,224 DEBUG   SenderThread:30000 [sender.py:send():379] send: exit
+2024-04-01 07:30:02,225 INFO    SenderThread:30000 [sender.py:send_exit():586] handling exit code: 1
+2024-04-01 07:30:02,225 INFO    SenderThread:30000 [sender.py:send_exit():588] handling runtime: 28
+2024-04-01 07:30:02,228 INFO    SenderThread:30000 [sender.py:_save_file():1390] saving file wandb-summary.json with policy end
+2024-04-01 07:30:02,228 INFO    SenderThread:30000 [sender.py:send_exit():594] send defer
+2024-04-01 07:30:02,228 DEBUG   HandlerThread:30000 [handler.py:handle_request():146] handle_request: defer
+2024-04-01 07:30:02,228 INFO    HandlerThread:30000 [handler.py:handle_request_defer():172] handle defer: 0
+2024-04-01 07:30:02,229 DEBUG   SenderThread:30000 [sender.py:send_request():406] send_request: defer
+2024-04-01 07:30:02,229 INFO    SenderThread:30000 [sender.py:send_request_defer():610] handle sender defer: 0
+2024-04-01 07:30:02,229 INFO    SenderThread:30000 [sender.py:transition_state():614] send defer: 1
+2024-04-01 07:30:02,229 DEBUG   HandlerThread:30000 [handler.py:handle_request():146] handle_request: defer
+2024-04-01 07:30:02,229 INFO    HandlerThread:30000 [handler.py:handle_request_defer():172] handle defer: 1
+2024-04-01 07:30:02,229 DEBUG   SenderThread:30000 [sender.py:send_request():406] send_request: defer
+2024-04-01 07:30:02,229 INFO    SenderThread:30000 [sender.py:send_request_defer():610] handle sender defer: 1
+2024-04-01 07:30:02,229 INFO    SenderThread:30000 [sender.py:transition_state():614] send defer: 2
+2024-04-01 07:30:02,229 DEBUG   HandlerThread:30000 [handler.py:handle_request():146] handle_request: defer
+2024-04-01 07:30:02,229 INFO    HandlerThread:30000 [handler.py:handle_request_defer():172] handle defer: 2
+2024-04-01 07:30:02,229 INFO    HandlerThread:30000 [system_monitor.py:finish():203] Stopping system monitor
+2024-04-01 07:30:02,229 DEBUG   SystemMonitor:30000 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-04-01 07:30:02,230 INFO    HandlerThread:30000 [interfaces.py:finish():202] Joined cpu monitor
+2024-04-01 07:30:02,230 DEBUG   SystemMonitor:30000 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2024-04-01 07:30:02,230 INFO    HandlerThread:30000 [interfaces.py:finish():202] Joined disk monitor
+2024-04-01 07:30:02,230 DEBUG   SystemMonitor:30000 [system_monitor.py:_start():183] Publishing last batch of metrics
+2024-04-01 07:30:02,292 INFO    HandlerThread:30000 [interfaces.py:finish():202] Joined gpu monitor
+2024-04-01 07:30:02,292 INFO    HandlerThread:30000 [interfaces.py:finish():202] Joined memory monitor
+2024-04-01 07:30:02,292 INFO    HandlerThread:30000 [interfaces.py:finish():202] Joined network monitor
+2024-04-01 07:30:02,293 DEBUG   SenderThread:30000 [sender.py:send_request():406] send_request: defer
+2024-04-01 07:30:02,293 INFO    SenderThread:30000 [sender.py:send_request_defer():610] handle sender defer: 2
+2024-04-01 07:30:02,293 INFO    SenderThread:30000 [sender.py:transition_state():614] send defer: 3
+2024-04-01 07:30:02,293 DEBUG   SenderThread:30000 [sender.py:send():379] send: stats
+2024-04-01 07:30:02,293 DEBUG   HandlerThread:30000 [handler.py:handle_request():146] handle_request: defer
+2024-04-01 07:30:02,293 INFO    HandlerThread:30000 [handler.py:handle_request_defer():172] handle defer: 3
+2024-04-01 07:30:02,294 DEBUG   SenderThread:30000 [sender.py:send_request():406] send_request: defer
+2024-04-01 07:30:02,294 INFO    SenderThread:30000 [sender.py:send_request_defer():610] handle sender defer: 3
+2024-04-01 07:30:02,294 INFO    SenderThread:30000 [sender.py:transition_state():614] send defer: 4
+2024-04-01 07:30:02,294 DEBUG   HandlerThread:30000 [handler.py:handle_request():146] handle_request: defer
+2024-04-01 07:30:02,294 INFO    HandlerThread:30000 [handler.py:handle_request_defer():172] handle defer: 4
+2024-04-01 07:30:02,294 DEBUG   SenderThread:30000 [sender.py:send_request():406] send_request: defer
+2024-04-01 07:30:02,294 INFO    SenderThread:30000 [sender.py:send_request_defer():610] handle sender defer: 4
+2024-04-01 07:30:02,294 INFO    SenderThread:30000 [sender.py:transition_state():614] send defer: 5
+2024-04-01 07:30:02,294 DEBUG   HandlerThread:30000 [handler.py:handle_request():146] handle_request: defer
+2024-04-01 07:30:02,294 INFO    HandlerThread:30000 [handler.py:handle_request_defer():172] handle defer: 5
+2024-04-01 07:30:02,294 DEBUG   SenderThread:30000 [sender.py:send():379] send: summary
+2024-04-01 07:30:02,297 INFO    SenderThread:30000 [sender.py:_save_file():1390] saving file wandb-summary.json with policy end
+2024-04-01 07:30:02,298 DEBUG   SenderThread:30000 [sender.py:send_request():406] send_request: defer
+2024-04-01 07:30:02,298 INFO    SenderThread:30000 [sender.py:send_request_defer():610] handle sender defer: 5
+2024-04-01 07:30:02,298 INFO    SenderThread:30000 [sender.py:transition_state():614] send defer: 6
+2024-04-01 07:30:02,298 DEBUG   HandlerThread:30000 [handler.py:handle_request():146] handle_request: defer
+2024-04-01 07:30:02,298 INFO    HandlerThread:30000 [handler.py:handle_request_defer():172] handle defer: 6
+2024-04-01 07:30:02,298 DEBUG   SenderThread:30000 [sender.py:send_request():406] send_request: defer
+2024-04-01 07:30:02,298 INFO    SenderThread:30000 [sender.py:send_request_defer():610] handle sender defer: 6
+2024-04-01 07:30:02,302 DEBUG   HandlerThread:30000 [handler.py:handle_request():146] handle_request: status_report
+2024-04-01 07:30:02,469 INFO    SenderThread:30000 [sender.py:transition_state():614] send defer: 7
+2024-04-01 07:30:02,469 DEBUG   HandlerThread:30000 [handler.py:handle_request():146] handle_request: defer
+2024-04-01 07:30:02,469 INFO    HandlerThread:30000 [handler.py:handle_request_defer():172] handle defer: 7
+2024-04-01 07:30:02,469 DEBUG   SenderThread:30000 [sender.py:send_request():406] send_request: defer
+2024-04-01 07:30:02,469 INFO    SenderThread:30000 [sender.py:send_request_defer():610] handle sender defer: 7
+2024-04-01 07:30:02,592 INFO    Thread-12 :30000 [dir_watcher.py:_on_file_modified():288] file/dir modified: /zhome/ea/9/137501/Desktop/ML_health/ML_health/wandb/run-20240401_072932-zcu2dn4s/files/config.yaml
+2024-04-01 07:30:02,592 INFO    Thread-12 :30000 [dir_watcher.py:_on_file_created():271] file/dir created: /zhome/ea/9/137501/Desktop/ML_health/ML_health/wandb/run-20240401_072932-zcu2dn4s/files/wandb-summary.json
+2024-04-01 07:30:03,225 DEBUG   HandlerThread:30000 [handler.py:handle_request():146] handle_request: poll_exit
+2024-04-01 07:30:04,548 INFO    SenderThread:30000 [sender.py:transition_state():614] send defer: 8
+2024-04-01 07:30:04,548 DEBUG   SenderThread:30000 [sender.py:send_request():406] send_request: poll_exit
+2024-04-01 07:30:04,548 DEBUG   HandlerThread:30000 [handler.py:handle_request():146] handle_request: defer
+2024-04-01 07:30:04,548 INFO    HandlerThread:30000 [handler.py:handle_request_defer():172] handle defer: 8
+2024-04-01 07:30:04,548 DEBUG   SenderThread:30000 [sender.py:send_request():406] send_request: defer
+2024-04-01 07:30:04,549 INFO    SenderThread:30000 [sender.py:send_request_defer():610] handle sender defer: 8
+2024-04-01 07:30:04,549 INFO    SenderThread:30000 [job_builder.py:build():318] Attempting to build job artifact
+2024-04-01 07:30:04,549 INFO    SenderThread:30000 [job_builder.py:_get_source_type():455] is repo sourced job
+2024-04-01 07:30:04,577 INFO    SenderThread:30000 [job_builder.py:build():431] adding wandb-job metadata file
+2024-04-01 07:30:04,588 INFO    SenderThread:30000 [sender.py:transition_state():614] send defer: 9
+2024-04-01 07:30:04,589 DEBUG   HandlerThread:30000 [handler.py:handle_request():146] handle_request: defer
+2024-04-01 07:30:04,589 DEBUG   SenderThread:30000 [sender.py:send():379] send: artifact
+2024-04-01 07:30:04,589 INFO    HandlerThread:30000 [handler.py:handle_request_defer():172] handle defer: 9
+2024-04-01 07:30:04,596 INFO    Thread-12 :30000 [dir_watcher.py:_on_file_modified():288] file/dir modified: /zhome/ea/9/137501/Desktop/ML_health/ML_health/wandb/run-20240401_072932-zcu2dn4s/files/output.log
+2024-04-01 07:30:05,226 DEBUG   HandlerThread:30000 [handler.py:handle_request():146] handle_request: poll_exit
+2024-04-01 07:30:05,365 INFO    SenderThread:30000 [sender.py:send_artifact():1468] sent artifact job-https___github.com_TheDingodile_ML_health.git_main.py - {'id': 'QXJ0aWZhY3Q6Nzc4NDQ3MTE5', 'state': 'COMMITTED', 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjE1NDE3OTk0Mw==', 'latestArtifact': {'id': 'QXJ0aWZhY3Q6Nzc4NDQ3MTE5', 'versionIndex': 8}}}
+2024-04-01 07:30:05,365 DEBUG   SenderThread:30000 [sender.py:send_request():406] send_request: defer
+2024-04-01 07:30:05,365 INFO    SenderThread:30000 [sender.py:send_request_defer():610] handle sender defer: 9
+2024-04-01 07:30:05,365 INFO    SenderThread:30000 [dir_watcher.py:finish():358] shutting down directory watcher
+2024-04-01 07:30:05,600 INFO    SenderThread:30000 [dir_watcher.py:finish():388] scan: /zhome/ea/9/137501/Desktop/ML_health/ML_health/wandb/run-20240401_072932-zcu2dn4s/files
+2024-04-01 07:30:05,600 INFO    SenderThread:30000 [dir_watcher.py:finish():402] scan save: /zhome/ea/9/137501/Desktop/ML_health/ML_health/wandb/run-20240401_072932-zcu2dn4s/files/config.yaml config.yaml
+2024-04-01 07:30:05,600 INFO    SenderThread:30000 [dir_watcher.py:finish():402] scan save: /zhome/ea/9/137501/Desktop/ML_health/ML_health/wandb/run-20240401_072932-zcu2dn4s/files/wandb-metadata.json wandb-metadata.json
+2024-04-01 07:30:05,600 INFO    SenderThread:30000 [dir_watcher.py:finish():402] scan save: /zhome/ea/9/137501/Desktop/ML_health/ML_health/wandb/run-20240401_072932-zcu2dn4s/files/requirements.txt requirements.txt
+2024-04-01 07:30:05,600 INFO    SenderThread:30000 [dir_watcher.py:finish():402] scan save: /zhome/ea/9/137501/Desktop/ML_health/ML_health/wandb/run-20240401_072932-zcu2dn4s/files/output.log output.log
+2024-04-01 07:30:05,603 INFO    SenderThread:30000 [dir_watcher.py:finish():402] scan save: /zhome/ea/9/137501/Desktop/ML_health/ML_health/wandb/run-20240401_072932-zcu2dn4s/files/wandb-summary.json wandb-summary.json
+2024-04-01 07:30:05,608 INFO    SenderThread:30000 [sender.py:transition_state():614] send defer: 10
+2024-04-01 07:30:05,608 DEBUG   SenderThread:30000 [sender.py:send_request():406] send_request: poll_exit
+2024-04-01 07:30:05,609 DEBUG   HandlerThread:30000 [handler.py:handle_request():146] handle_request: defer
+2024-04-01 07:30:05,611 INFO    HandlerThread:30000 [handler.py:handle_request_defer():172] handle defer: 10
+2024-04-01 07:30:05,612 DEBUG   SenderThread:30000 [sender.py:send_request():406] send_request: defer
+2024-04-01 07:30:05,612 INFO    SenderThread:30000 [sender.py:send_request_defer():610] handle sender defer: 10
+2024-04-01 07:30:05,612 INFO    SenderThread:30000 [file_pusher.py:finish():172] shutting down file pusher
+2024-04-01 07:30:06,003 INFO    wandb-upload_0:30000 [upload_job.py:push():131] Uploaded file /zhome/ea/9/137501/Desktop/ML_health/ML_health/wandb/run-20240401_072932-zcu2dn4s/files/config.yaml
+2024-04-01 07:30:06,148 INFO    wandb-upload_1:30000 [upload_job.py:push():131] Uploaded file /zhome/ea/9/137501/Desktop/ML_health/ML_health/wandb/run-20240401_072932-zcu2dn4s/files/requirements.txt
+2024-04-01 07:30:06,227 DEBUG   HandlerThread:30000 [handler.py:handle_request():146] handle_request: poll_exit
+2024-04-01 07:30:06,227 DEBUG   SenderThread:30000 [sender.py:send_request():406] send_request: poll_exit
+2024-04-01 07:30:06,341 INFO    wandb-upload_3:30000 [upload_job.py:push():131] Uploaded file /zhome/ea/9/137501/Desktop/ML_health/ML_health/wandb/run-20240401_072932-zcu2dn4s/files/wandb-summary.json
+2024-04-01 07:30:06,362 INFO    wandb-upload_2:30000 [upload_job.py:push():131] Uploaded file /zhome/ea/9/137501/Desktop/ML_health/ML_health/wandb/run-20240401_072932-zcu2dn4s/files/output.log
+2024-04-01 07:30:06,563 INFO    Thread-11 (_thread_body):30000 [sender.py:transition_state():614] send defer: 11
+2024-04-01 07:30:06,563 DEBUG   HandlerThread:30000 [handler.py:handle_request():146] handle_request: defer
+2024-04-01 07:30:06,563 INFO    HandlerThread:30000 [handler.py:handle_request_defer():172] handle defer: 11
+2024-04-01 07:30:06,563 DEBUG   SenderThread:30000 [sender.py:send_request():406] send_request: defer
+2024-04-01 07:30:06,563 INFO    SenderThread:30000 [sender.py:send_request_defer():610] handle sender defer: 11
+2024-04-01 07:30:06,564 INFO    SenderThread:30000 [file_pusher.py:join():178] waiting for file pusher
+2024-04-01 07:30:06,564 INFO    SenderThread:30000 [sender.py:transition_state():614] send defer: 12
+2024-04-01 07:30:06,564 DEBUG   HandlerThread:30000 [handler.py:handle_request():146] handle_request: defer
+2024-04-01 07:30:06,564 INFO    HandlerThread:30000 [handler.py:handle_request_defer():172] handle defer: 12
+2024-04-01 07:30:06,564 DEBUG   SenderThread:30000 [sender.py:send_request():406] send_request: defer
+2024-04-01 07:30:06,564 INFO    SenderThread:30000 [sender.py:send_request_defer():610] handle sender defer: 12
+2024-04-01 07:30:06,564 INFO    SenderThread:30000 [file_stream.py:finish():614] file stream finish called
+2024-04-01 07:30:06,826 INFO    SenderThread:30000 [file_stream.py:finish():618] file stream finish is done
+2024-04-01 07:30:06,826 INFO    SenderThread:30000 [sender.py:transition_state():614] send defer: 13
+2024-04-01 07:30:06,826 DEBUG   HandlerThread:30000 [handler.py:handle_request():146] handle_request: defer
+2024-04-01 07:30:06,826 INFO    HandlerThread:30000 [handler.py:handle_request_defer():172] handle defer: 13
+2024-04-01 07:30:06,827 DEBUG   SenderThread:30000 [sender.py:send_request():406] send_request: defer
+2024-04-01 07:30:06,827 INFO    SenderThread:30000 [sender.py:send_request_defer():610] handle sender defer: 13
+2024-04-01 07:30:06,827 INFO    SenderThread:30000 [sender.py:transition_state():614] send defer: 14
+2024-04-01 07:30:06,827 DEBUG   HandlerThread:30000 [handler.py:handle_request():146] handle_request: defer
+2024-04-01 07:30:06,827 DEBUG   SenderThread:30000 [sender.py:send():379] send: final
+2024-04-01 07:30:06,827 INFO    HandlerThread:30000 [handler.py:handle_request_defer():172] handle defer: 14
+2024-04-01 07:30:06,827 DEBUG   SenderThread:30000 [sender.py:send():379] send: footer
+2024-04-01 07:30:06,827 DEBUG   SenderThread:30000 [sender.py:send_request():406] send_request: defer
+2024-04-01 07:30:06,827 INFO    SenderThread:30000 [sender.py:send_request_defer():610] handle sender defer: 14
+2024-04-01 07:30:06,828 DEBUG   HandlerThread:30000 [handler.py:handle_request():146] handle_request: poll_exit
+2024-04-01 07:30:06,828 DEBUG   HandlerThread:30000 [handler.py:handle_request():146] handle_request: poll_exit
+2024-04-01 07:30:06,828 DEBUG   SenderThread:30000 [sender.py:send_request():406] send_request: poll_exit
+2024-04-01 07:30:06,828 DEBUG   SenderThread:30000 [sender.py:send_request():406] send_request: poll_exit
+2024-04-01 07:30:06,829 DEBUG   HandlerThread:30000 [handler.py:handle_request():146] handle_request: server_info
+2024-04-01 07:30:06,829 DEBUG   SenderThread:30000 [sender.py:send_request():406] send_request: server_info
+2024-04-01 07:30:06,831 DEBUG   HandlerThread:30000 [handler.py:handle_request():146] handle_request: get_summary
+2024-04-01 07:30:06,831 DEBUG   HandlerThread:30000 [handler.py:handle_request():146] handle_request: sampled_history
+2024-04-01 07:30:06,832 DEBUG   HandlerThread:30000 [handler.py:handle_request():146] handle_request: internal_messages
+2024-04-01 07:30:06,976 INFO    MainThread:30000 [wandb_run.py:_footer_history_summary_info():3920] rendering history
+2024-04-01 07:30:06,977 INFO    MainThread:30000 [wandb_run.py:_footer_history_summary_info():3952] rendering summary
+2024-04-01 07:30:06,977 INFO    MainThread:30000 [wandb_run.py:_footer_sync_info():3879] logging synced files
+2024-04-01 07:30:06,977 DEBUG   HandlerThread:30000 [handler.py:handle_request():146] handle_request: shutdown
+2024-04-01 07:30:06,977 INFO    HandlerThread:30000 [handler.py:finish():866] shutting down handler
+2024-04-01 07:30:07,829 INFO    WriterThread:30000 [datastore.py:close():296] close: /zhome/ea/9/137501/Desktop/ML_health/ML_health/wandb/run-20240401_072932-zcu2dn4s/run-zcu2dn4s.wandb
+2024-04-01 07:30:07,976 INFO    SenderThread:30000 [sender.py:finish():1546] shutting down sender
+2024-04-01 07:30:07,977 INFO    SenderThread:30000 [file_pusher.py:finish():172] shutting down file pusher
+2024-04-01 07:30:07,977 INFO    SenderThread:30000 [file_pusher.py:join():178] waiting for file pusher
