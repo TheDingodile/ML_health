@@ -8996,3 +8996,33 @@
 2024-04-01 12:04:10,066 DEBUG   SenderThread:11529 [sender.py:send():379] send: history
 2024-04-01 12:04:10,067 DEBUG   SenderThread:11529 [sender.py:send_request():406] send_request: summary_record
 2024-04-01 12:04:10,069 INFO    SenderThread:11529 [sender.py:_save_file():1390] saving file wandb-summary.json with policy end
+2024-04-01 12:04:10,676 INFO    Thread-12 :11529 [dir_watcher.py:_on_file_modified():288] file/dir modified: /zhome/ea/9/137501/Desktop/ML_health/ML_health/wandb/run-20240401_113141-2dbqojj3/files/wandb-summary.json
+2024-04-01 12:04:11,009 DEBUG   HandlerThread:11529 [handler.py:handle_request():146] handle_request: partial_history
+2024-04-01 12:04:11,009 DEBUG   SenderThread:11529 [sender.py:send():379] send: history
+2024-04-01 12:04:11,009 DEBUG   SenderThread:11529 [sender.py:send_request():406] send_request: summary_record
+2024-04-01 12:04:11,012 INFO    SenderThread:11529 [sender.py:_save_file():1390] saving file wandb-summary.json with policy end
+2024-04-01 12:04:11,679 INFO    Thread-12 :11529 [dir_watcher.py:_on_file_modified():288] file/dir modified: /zhome/ea/9/137501/Desktop/ML_health/ML_health/wandb/run-20240401_113141-2dbqojj3/files/wandb-summary.json
+2024-04-01 12:04:11,959 DEBUG   HandlerThread:11529 [handler.py:handle_request():146] handle_request: partial_history
+2024-04-01 12:04:11,960 DEBUG   SenderThread:11529 [sender.py:send():379] send: history
+2024-04-01 12:04:11,960 DEBUG   SenderThread:11529 [sender.py:send_request():406] send_request: summary_record
+2024-04-01 12:04:11,963 INFO    SenderThread:11529 [sender.py:_save_file():1390] saving file wandb-summary.json with policy end
+2024-04-01 12:04:12,270 DEBUG   SenderThread:11529 [sender.py:send():379] send: stats
+2024-04-01 12:04:12,550 DEBUG   HandlerThread:11529 [handler.py:handle_request():146] handle_request: stop_status
+2024-04-01 12:04:12,551 DEBUG   SenderThread:11529 [sender.py:send_request():406] send_request: stop_status
+2024-04-01 12:04:12,576 DEBUG   HandlerThread:11529 [handler.py:handle_request():146] handle_request: internal_messages
+2024-04-01 12:04:12,682 INFO    Thread-12 :11529 [dir_watcher.py:_on_file_modified():288] file/dir modified: /zhome/ea/9/137501/Desktop/ML_health/ML_health/wandb/run-20240401_113141-2dbqojj3/files/wandb-summary.json
+2024-04-01 12:04:12,812 DEBUG   HandlerThread:11529 [handler.py:handle_request():146] handle_request: status_report
+2024-04-01 12:04:12,847 DEBUG   HandlerThread:11529 [handler.py:handle_request():146] handle_request: partial_history
+2024-04-01 12:04:12,848 DEBUG   SenderThread:11529 [sender.py:send():379] send: history
+2024-04-01 12:04:12,848 DEBUG   SenderThread:11529 [sender.py:send_request():406] send_request: summary_record
+2024-04-01 12:04:12,851 INFO    SenderThread:11529 [sender.py:_save_file():1390] saving file wandb-summary.json with policy end
+2024-04-01 12:04:13,686 INFO    Thread-12 :11529 [dir_watcher.py:_on_file_modified():288] file/dir modified: /zhome/ea/9/137501/Desktop/ML_health/ML_health/wandb/run-20240401_113141-2dbqojj3/files/wandb-summary.json
+2024-04-01 12:04:13,851 DEBUG   HandlerThread:11529 [handler.py:handle_request():146] handle_request: partial_history
+2024-04-01 12:04:13,852 DEBUG   SenderThread:11529 [sender.py:send():379] send: history
+2024-04-01 12:04:13,852 DEBUG   SenderThread:11529 [sender.py:send_request():406] send_request: summary_record
+2024-04-01 12:04:13,855 INFO    SenderThread:11529 [sender.py:_save_file():1390] saving file wandb-summary.json with policy end
+2024-04-01 12:04:14,689 INFO    Thread-12 :11529 [dir_watcher.py:_on_file_modified():288] file/dir modified: /zhome/ea/9/137501/Desktop/ML_health/ML_health/wandb/run-20240401_113141-2dbqojj3/files/wandb-summary.json
+2024-04-01 12:04:14,736 DEBUG   HandlerThread:11529 [handler.py:handle_request():146] handle_request: partial_history
+2024-04-01 12:04:14,737 DEBUG   SenderThread:11529 [sender.py:send():379] send: history
+2024-04-01 12:04:14,737 DEBUG   SenderThread:11529 [sender.py:send_request():406] send_request: summary_record
+2024-04-01 12:04:14,740 INFO    SenderThread:11529 [sender.py:_save_file():1390] saving file wandb-summary.json with policy end

@@ -9065,3 +9065,8 @@
 2024-04-01 12:04:03,439 INFO    SenderThread:11528 [sender.py:_save_file():1390] saving file wandb-summary.json with policy end
 2024-04-01 12:04:03,653 INFO    Thread-12 :11528 [dir_watcher.py:_on_file_modified():288] file/dir modified: /zhome/ea/9/137501/Desktop/ML_health/ML_health/wandb/run-20240401_113141-ltg8r8l1/files/wandb-summary.json
 2024-04-01 12:04:08,440 DEBUG   HandlerThread:11528 [handler.py:handle_request():146] handle_request: status_report
+2024-04-01 12:04:12,280 DEBUG   SenderThread:11528 [sender.py:send():379] send: stats
+2024-04-01 12:04:12,529 DEBUG   HandlerThread:11528 [handler.py:handle_request():146] handle_request: stop_status
+2024-04-01 12:04:12,529 DEBUG   SenderThread:11528 [sender.py:send_request():406] send_request: stop_status
+2024-04-01 12:04:12,538 DEBUG   HandlerThread:11528 [handler.py:handle_request():146] handle_request: internal_messages
+2024-04-01 12:04:13,755 DEBUG   HandlerThread:11528 [handler.py:handle_request():146] handle_request: status_report

@@ -57,7 +57,7 @@ class Defaults(Parameters):
         dataset_train_small = T5Dataset(model.tokenizer, data_train_small, label_train_small, is_test=False, append_schema_info=True, tables_file=tables_file, max_source_length=max_length_source, max_target_length=max_length_target)
         train_loader_small = DataLoader(dataset_train_small, batch_size=batch_size, collate_fn=dataset_train_small.collate_fn, shuffle=False)
 
-        dataset_val = T5Dataset(model.tokenizer, prediction_data, None, is_test=True, append_schema_info=True, tables_file=tables_file)
+        dataset_val = T5Dataset(model.tokenizer, prediction_data, None, is_test=True, append_schema_info=True, tables_file=tables_file, max_source_length=max_length_source, max_target_length=max_length_target)
         val_loader = DataLoader(dataset_val, batch_size=batch_size, collate_fn=dataset_val.collate_fn, shuffle=False)
 
         for i in range(1000):

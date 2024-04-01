@@ -2,7 +2,7 @@ from src.models.dummy_model import Dummymodel
 from src.models.T5_model import T5Model
 import torch.nn as nn
 import torch
-from transformers import T5Tokenizer
+from transformers import T5Tokenizer, get_linear_schedule_with_warmup
 from torch import Tensor
 
 class Model(nn.Module):
@@ -18,7 +18,9 @@ class Model(nn.Module):
             self.optimizer = None
         elif model_type == "t5":
             self.model = T5Model(self.device, self.model_name, max_length_target)
-            self.optimizer = torch.optim.Adam(self.model.parameters(), lr=lr)
+            self.optimizer = torch.optim.AdamW(self.model.parameters(), lr=lr, weight_decay=0.1)
+            self.scheduler = get_linear_schedule_with_warmup(self.optimizer, num_warmup_steps=0, num_training_steps=5000)
+            # self.optimizer = torch.optim.Adam(self.model.parameters(), lr=lr)
 
     def trainer(self, batch: dict[str: Tensor]):
         """
@@ -28,7 +30,7 @@ class Model(nn.Module):
         input_ids = batch["source_ids"].to(self.device)
         attention_mask = batch["source_mask"].to(self.device)
         labels = batch["target_ids"].to(self.device)
-        loss = self.model.trainer(input_ids, attention_mask, labels, self.tokenizer, self.optimizer)
+        loss = self.model.trainer(input_ids, attention_mask, labels, self.tokenizer, self.optimizer, self.scheduler)
         return loss
     
 

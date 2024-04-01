@@ -1,4 +1,4 @@
-from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, T5Tokenizer, T5ForConditionalGeneration, get_linear_schedule_with_warmup
+from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, T5Tokenizer, T5ForConditionalGeneration
 import torch.nn as nn
 import torch
 
@@ -10,13 +10,15 @@ class T5Model(nn.Module):
         self.model_name = model_name
         self.network = T5ForConditionalGeneration.from_pretrained(self.model_name).to(device)
 
-    def trainer(self, input_ids, attention_mask, labels, tokenizer, optimizer):
+    def trainer(self, input_ids, attention_mask, labels, tokenizer, optimizer, scheduler):
         self.network.train()
         labels[labels[:,:]==tokenizer.pad_token_id] = -100
         labels = labels.to(self.device)
         loss = self.network(input_ids=input_ids, attention_mask=attention_mask, labels=labels)[0]
         loss.backward()
+        torch.nn.utils.clip_grad_norm_(self.network.parameters(), 1.0)
         optimizer.step()
+        scheduler.step()
         self.network.eval()
         return loss.detach().cpu().numpy()
 
