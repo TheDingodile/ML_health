@@ -158,3 +158,37 @@ wandb: ⭐️ View project at https://wandb.ai/kobomao/ML_healthcare
 wandb: 🚀 View run at https://wandb.ai/kobomao/ML_healthcare/runs/3pno6rfx/workspace
 You are using the default legacy behaviour of the <class 'transformers.models.t5.tokenization_t5.T5Tokenizer'>. This is expected, and simply means that the `legacy` (previous) behavior will be used so nothing changes for you. If you want to use the new behaviour, set `legacy=False`. This should only be set if you understand what it means, and thoroughly read the reason why this was added as explained in https://github.com/huggingface/transformers/pull/24565
 Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+
+<style>
+c { color: #9cdcfe; font-family: 'Verdana', sans-serif;} /* VARIABLE */
+d { color: #4EC9B0; font-family: 'Verdana', sans-serif;} /* CLASS */
+e { color: #569cd6; font-family: 'Verdana', sans-serif;} /* BOOL */
+f { color: #b5cea8; font-family: 'Verdana', sans-serif;} /* NUMBERS */
+j { color: #ce9178; font-family: 'Verdana', sans-serif;} /* STRING */
+k { font-family: 'Verdana', sans-serif;} /* SYMBOLS */
+</style>
+
+# Parameters
+
+| PARAMETER         | TYPE              | VALUE             |
+|-------------------|-------------------|-------------------|
+| <c>name</c>       | <d>str</d>        | <j>"Ensemble_fix-0"</j> |
+| <c>time</c>       | <d>int</d>        | <f>82800</f>      |
+| <c>data_name</c>  | <d>str</d>        | <j>"mimic_iv/train/data.json"</j> |
+| <c>labels_name</c>| <d>str</d>        | <j>"mimic_iv/train/label.json"</j> |
+| <c>answer_name</c>| <d>str</d>        | <j>"mimic_iv/train/answer.json"</j> |
+| <c>prediction_name</c>| <d>str</d>        | <j>"mimic_iv/valid/data.json"</j> |
+| <c>model_type</c> | <d>str</d>        | <j>"t5"</j>       |
+| <c>t5_model_name</c>| <d>str</d>        | <j>"t5-base"</j>  |
+| <c>batch_size</c> | <d>int</d>        | <f>12</f>         |
+| <c>eval_fraction</c>| <d>int</d>        | <f>50</f>         |
+| <c>null_chance_boundary</c>| <d>float</d>      | <f>1.0</f>        |
+| <c>make_predictions_after</c>| <d>int</d>        | <f>5</f>          |
+| <c>lr</c>         | <d>float</d>      | <f>0.001</f>      |
+| <c>max_length_source</c>| <d>int</d>        | <f>512</f>        |
+| <c>max_length_target</c>| <d>int</d>        | <f>512</f>        |
+
+# Output
+
+```
+```
