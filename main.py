@@ -25,7 +25,7 @@ class Defaults(Parameters):
     prediction_name: str = "sample_data/valid/data.json"
 
     model_type: str = "t5"
-    t5_model_name: str = "t5-large"
+    t5_model_name: str = "t5-base"
 
     batch_size: int = 1
     eval_fraction: int = 4
