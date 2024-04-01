@@ -14,16 +14,14 @@ def assemble_model():
         for out in data:
             pred_dict[out["id"]].append(out["pred"])
 
-    agrees = 0
-    disagrees = 0
+    counts = 0
     for pred in pred_dict:
         if len(set(pred_dict[pred])) == 1:
             pred_dict[pred] = pred_dict[pred][0]
-            agrees += 1
         else:
+            counts += 1
             pred_dict[pred] = "null"
-            disagrees += 1
-    print(agrees, disagrees)
+    print(counts/pred_dict.__len__() * 100)
 
     evaluator.save_predictions("assemble_model", pred_dict)
 
@@ -32,15 +30,19 @@ def entropy_model():
     out_eval = "save_predictions"
     data = json.load(open(f"predictions/{out_eval}-0/out_eval.json"))
     # pred_dict = {out["id"]: (out["pred"], out["entropy"]) for out in data}
-    pred_dict = {out["id"]: out["question"] for out in data}
+    pred_dict = {out["id"]: (out["question"], max(out["entropy"]), out["pred"]) for out in data}
     counts = 0
     for pred in pred_dict:
-        print(pred_dict[pred])
-        time.sleep(10)
-        if pred_dict[pred][-1] == 0:
-            # pred_dict[pred] = pred_dict[pred][:-1]
+        if pred_dict[pred][1] > 0.001:
+            pred_dict[pred] = "null"
             counts += 1
-    print(counts)
+        else:
+            pred_dict[pred] = pred_dict[pred][2]
+    print(counts/pred_dict.__len__() * 100)
 
 
-entropy_model()
+
+    evaluator.save_predictions("entropy_model", pred_dict)
+
+
+assemble_model()
