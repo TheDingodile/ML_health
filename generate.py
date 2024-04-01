@@ -291,15 +291,28 @@ from main import Defaults, GPU
 #         prediction_name="mimic_iv/valid/data.json")
     
 
-Defaults(name="Ensemble_fix", 
-        GPU=GPU.v32, 
-        batch_size=12, 
-        eval_fraction=50,
-        null_chance_boundary=1,
-        model_type="t5",
-        t5_model_name="t5-base",
-        data_name="mimic_iv/train/data.json",  
-        labels_name="mimic_iv/train/label.json",
-        answer_name="mimic_iv/train/answer.json",
-        prediction_name="mimic_iv/valid/data.json")
+# Defaults(name="Ensemble_fix", 
+#         GPU=GPU.v32, 
+#         batch_size=12, 
+#         eval_fraction=50,
+#         null_chance_boundary=1,
+#         model_type="t5",
+#         t5_model_name="t5-base",
+#         data_name="mimic_iv/train/data.json",  
+#         labels_name="mimic_iv/train/label.json",
+#         answer_name="mimic_iv/train/answer.json",
+#         prediction_name="mimic_iv/valid/data.json")
+
+for i in range(1, 6):
+    Defaults(name=f"Ensemble_fix{i}", 
+            GPU=GPU.v32, 
+            batch_size=12, 
+            eval_fraction=50,
+            null_chance_boundary=1,
+            model_type="t5",
+            t5_model_name="t5-base",
+            data_name="mimic_iv/train/data.json",  
+            labels_name="mimic_iv/train/label.json",
+            answer_name="mimic_iv/train/answer.json",
+            prediction_name="mimic_iv/valid/data.json")
 
