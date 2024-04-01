@@ -372,14 +372,27 @@ from main import Defaults, GPU
 #         prediction_name="mimic_iv/valid/data.json")
 
 
-Defaults(name=f"added_scheduler", 
-        GPU=GPU.v32, 
+# Defaults(name=f"added_scheduler", 
+#         GPU=GPU.v32, 
+#         batch_size=12, 
+#         eval_fraction=50,
+#         null_chance_boundary=1,
+#         make_predictions_after=25,
+#         model_type="t5",
+#         t5_model_name="t5-base",
+#         data_name="mimic_iv/train/data.json",  
+#         labels_name="mimic_iv/train/label.json",
+#         answer_name="mimic_iv/train/answer.json",
+#         prediction_name="mimic_iv/valid/data.json")
+
+Defaults(name=f"added_scheduler_large", 
+        GPU=GPU.a80, 
         batch_size=12, 
-        eval_fraction=50,
+        eval_fraction=25,
         null_chance_boundary=1,
-        make_predictions_after=25,
+        make_predictions_after=5,
         model_type="t5",
-        t5_model_name="t5-base",
+        t5_model_name="t5-large",
         data_name="mimic_iv/train/data.json",  
         labels_name="mimic_iv/train/label.json",
         answer_name="mimic_iv/train/answer.json",
