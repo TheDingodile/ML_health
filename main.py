@@ -31,7 +31,7 @@ class Defaults(Parameters):
     eval_fraction: int = 4
 
     null_chance_boundary: float = 0.5
-    make_predictions_after: int = 3
+    make_predictions_after: int = 5
     lr: float = 0.001
     max_length_source: int = 512
     max_length_target: int = 512
