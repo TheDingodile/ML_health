@@ -31,12 +31,13 @@ class Defaults(Parameters):
     eval_fraction: int = 4
 
     null_chance_boundary: float = 0.5
-    make_predictions_after: int = 2
+    make_predictions_after: int = 3
     lr: float = 0.001
-    max_length_source: int = 1024
-    max_length_target: int = 1024
+    max_length_source: int = 512
+    max_length_target: int = 512
 
     def run(self, name: str, eval_fraction: int, max_length_source: int, max_length_target: int, lr: float, t5_model_name: str, isServer: bool, make_predictions_after: int, time: int, batch_size: int, model_type:str, data_name:str, labels_name: str, answer_name: str, prediction_name: str, null_chance_boundary: float) -> None:
+        start = seconds()
         device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         tables_file = "mimic_iv/tables.json"
         if (isServer):
@@ -97,6 +98,11 @@ class Defaults(Parameters):
                 out_eval = model.model.generate(model.tokenizer, val_loader)
                 pred_dict = {out["id"]: out["pred"] if out["prob_null"] < null_chance_boundary else 'null' for out in out_eval}
                 evaluator.save_predictions(name, pred_dict, out_eval)
+                break
+
+            if seconds() - start > time:
+                print(f"Time limit reached: epoch {i}")
+                break
 
 
 
