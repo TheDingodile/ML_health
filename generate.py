@@ -293,7 +293,7 @@ from main import Defaults, GPU
 
 Defaults(name="Ensemble_fix", 
         GPU=GPU.v32, 
-        batch_size=16, 
+        batch_size=12, 
         eval_fraction=50,
         null_chance_boundary=1,
         model_type="t5",
