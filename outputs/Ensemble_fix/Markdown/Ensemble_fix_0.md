@@ -192,3 +192,118 @@ k { font-family: 'Verdana', sans-serif;} /* SYMBOLS */
 
 ```
 ```
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+--- Logging error ---
+Thread SenderThread:
+Exception in thread StreamThr:
+Exception in threading.excepthook:
+Exception ignored in thread started by: <bound method Thread._bootstrap of <StreamThread(StreamThr, started daemon 140213613098752)>>
+Exception ignored in sys.unraisablehook: <built-in function unraisablehook>
+
+Aborted!
+Exception ignored in atexit callback: <function _Manager._atexit_setup.<locals>.<lambda> at 0x7fac89960550>
+Traceback (most recent call last):
+  File "/zhome/ea/9/137501/Desktop/ML_health/project-env/lib/python3.10/site-packages/wandb/sdk/wandb_manager.py", line 156, in <lambda>
+    self._atexit_lambda = lambda: self._atexit_teardown()
+  File "/zhome/ea/9/137501/Desktop/ML_health/project-env/lib/python3.10/site-packages/wandb/sdk/wandb_manager.py", line 165, in _atexit_teardown
+    self._teardown(exit_code)
+  File "/zhome/ea/9/137501/Desktop/ML_health/project-env/lib/python3.10/site-packages/wandb/sdk/wandb_manager.py", line 176, in _teardown
+    result = self._service.join()
+  File "/zhome/ea/9/137501/Desktop/ML_health/project-env/lib/python3.10/site-packages/wandb/sdk/service/service.py", line 263, in join
+    ret = self._internal_proc.wait()
+  File "/appl/python/3.10.7/lib/python3.10/subprocess.py", line 1207, in wait
+    return self._wait(timeout=timeout)
+  File "/appl/python/3.10.7/lib/python3.10/subprocess.py", line 1941, in _wait
+    (pid, sts) = self._try_wait(0)
+  File "/appl/python/3.10.7/lib/python3.10/subprocess.py", line 1899, in _try_wait
+    (pid, sts) = os.waitpid(self.pid, wait_flags)
+KeyboardInterrupt: 
+/bin/rm: write error: No space left on device
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 21070570: <Ensemble_fix_0> in cluster <dcc> Exited
+
+Job <Ensemble_fix_0> was submitted from host <n-62-30-1> by user <s183914> in cluster <dcc> at Mon Apr  1 07:44:31 2024
+Job was executed on host(s) <4*n-62-20-12>, in queue <gpuv100>, as user <s183914> in cluster <dcc> at Mon Apr  1 07:44:31 2024
+</zhome/ea/9/137501> was used as the home directory.
+</zhome/ea/9/137501/Desktop/ML_health/ML_health> was used as the working directory.
+Started at Mon Apr  1 07:44:31 2024
+Terminated at Mon Apr  1 11:25:20 2024
+Results reported at Mon Apr  1 11:25:20 2024
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/sh
+#BSUB -q gpuv100
+#BSUB -gpu "num=1:mode=exclusive_process"
+#BSUB -n 4
+#BSUB -R "rusage[mem=16G]"
+#BSUB -R "select[gpu32gb]"
+#BSUB -R "span[hosts=1]"
+#BSUB -W 1440
+# end of BSUB options
+module -s load python3
+source ../project-env/bin/activate
+
+python main.py $MYARGS
+------------------------------------------------------------
+
+TERM_OWNER: job killed by owner.
+Exited with signal termination: 14.
+
+Resource usage summary:
+
+    CPU time :                                   3831.00 sec.
+    Max Memory :                                 1370 MB
+    Average Memory :                             1194.25 MB
+    Total Requested Memory :                     65536.00 MB
+    Delta Memory :                               64166.00 MB
+    Max Swap :                                   -
+    Max Processes :                              6
+    Max Threads :                                36
+    Run time :                                   13276 sec.
+    Turnaround time :                            13249 sec.
+
+The output (if any) is above this job summary.
+
