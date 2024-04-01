@@ -240,23 +240,48 @@ from main import Defaults, GPU
 #          answer_name="mimic_iv/train/answer.json",
 #          prediction_name="mimic_iv/valid/data.json")
 
-for i in range(6):
-    Defaults(name=f"Ensemble{i}", 
-            GPU=GPU.v32, 
-            batch_size=16, 
-            eval_fraction=25,
-            null_chance_boundary=1,
-            model_type="t5",
-            t5_model_name="t5-base",
-            data_name="mimic_iv/train/data.json",  
-            labels_name="mimic_iv/train/label.json",
-            answer_name="mimic_iv/train/answer.json",
-            prediction_name="mimic_iv/valid/data.json")
+# for i in range(6):
+#     Defaults(name=f"Ensemble{i}", 
+#             GPU=GPU.v32, 
+#             batch_size=16, 
+#             eval_fraction=25,
+#             null_chance_boundary=1,
+#             model_type="t5",
+#             t5_model_name="t5-base",
+#             data_name="mimic_iv/train/data.json",  
+#             labels_name="mimic_iv/train/label.json",
+#             answer_name="mimic_iv/train/answer.json",
+#             prediction_name="mimic_iv/valid/data.json")
     
-Defaults(name="Ensemble6", 
+# Defaults(name="Ensemble6", 
+#         GPU=GPU.a80, 
+#         batch_size=16, 
+#         eval_fraction=25,
+#         null_chance_boundary=1,
+#         model_type="t5",
+#         t5_model_name="t5-base",
+#         data_name="mimic_iv/train/data.json",  
+#         labels_name="mimic_iv/train/label.json",
+#         answer_name="mimic_iv/train/answer.json",
+#         prediction_name="mimic_iv/valid/data.json")
+
+# Defaults(name="Ensemble7", 
+#         GPU=GPU.a40, 
+#         batch_size=16, 
+#         eval_fraction=25,
+#         null_chance_boundary=1,
+#         model_type="t5",
+#         t5_model_name="t5-base",
+#         data_name="mimic_iv/train/data.json",  
+#         labels_name="mimic_iv/train/label.json",
+#         answer_name="mimic_iv/train/answer.json",
+#         prediction_name="mimic_iv/valid/data.json")
+
+Defaults(name="Add_information", 
         GPU=GPU.a80, 
         batch_size=16, 
         eval_fraction=25,
+        max_length_source=1024,
         null_chance_boundary=1,
         model_type="t5",
         t5_model_name="t5-base",
@@ -264,19 +289,6 @@ Defaults(name="Ensemble6",
         labels_name="mimic_iv/train/label.json",
         answer_name="mimic_iv/train/answer.json",
         prediction_name="mimic_iv/valid/data.json")
-
-Defaults(name="Ensemble7", 
-        GPU=GPU.a40, 
-        batch_size=16, 
-        eval_fraction=25,
-        null_chance_boundary=1,
-        model_type="t5",
-        t5_model_name="t5-base",
-        data_name="mimic_iv/train/data.json",  
-        labels_name="mimic_iv/train/label.json",
-        answer_name="mimic_iv/train/answer.json",
-        prediction_name="mimic_iv/valid/data.json")
-
     
 
     

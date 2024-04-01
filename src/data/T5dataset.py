@@ -99,6 +99,8 @@ class T5Dataset(Dataset):
         """
         question = sample["question"]
 
+        extra_info = "Convert this question to SQL based on the table. Many questions are unanswerable or ambiguous. If you think, even slightly, the question is unanswerable or ambiguous, write 'null' as the SQL query. Getting an answer wrong or attempting to answer an unanswerable question is catastrophic."
+        question = f"{question} {extra_info}"
         if append_schema_info:
             if self.db_json:
                 tables_json = [db for db in self.db_json if db["db_id"] == self.db_id][0]
