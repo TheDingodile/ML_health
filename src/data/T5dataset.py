@@ -34,9 +34,11 @@ class T5Dataset(Dataset):
         exclude_unans=False, # exclude unanswerable questions b/c they have no valid sql.
         random_seed=0,
         append_schema_info=True,
+        give_extra_info=True,
     ):
 
         super().__init__()
+        self.give_extra_info = give_extra_info
         self.tokenizer = tokenizer
         self.db_id = db_id
         self.is_test = is_test # this option does not include target label
@@ -98,9 +100,9 @@ class T5Dataset(Dataset):
         Processes a single data sample, adding schema description to the question.
         """
         question = sample["question"]
-
-        extra_info = "Convert this question to SQL based on the table. Many questions are unanswerable or ambiguous. If you think, even slightly, the question is unanswerable or ambiguous, write 'null' as the SQL query. Getting an answer wrong or attempting to answer an unanswerable question is catastrophic."
-        question = f"{question} {extra_info}"
+        if self.give_extra_info:
+            extra_info = "Convert this question to SQL based on the table. Many questions are unanswerable or ambiguous. If you think, even slightly, the question is unanswerable or ambiguous, write 'null' as the SQL query. Getting an answer wrong or attempting to answer an unanswerable question is catastrophic."
+            question = f"{question} {extra_info}"
         if append_schema_info:
             if self.db_json:
                 tables_json = [db for db in self.db_json if db["db_id"] == self.db_id][0]

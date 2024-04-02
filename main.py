@@ -35,8 +35,10 @@ class Defaults(Parameters):
     lr: float = 0.001
     max_length_source: int = 512
     max_length_target: int = 512
+    append_scheme_info: bool = True
+    give_extra_info: bool = True
 
-    def run(self, name: str, eval_fraction: int, max_length_source: int, max_length_target: int, lr: float, t5_model_name: str, isServer: bool, make_predictions_after: int, time: int, batch_size: int, model_type:str, data_name:str, labels_name: str, answer_name: str, prediction_name: str, null_chance_boundary: float) -> None:
+    def run(self, name: str, eval_fraction: int, append_scheme_info: bool, give_extra_info: bool, max_length_source: int, max_length_target: int, lr: float, t5_model_name: str, isServer: bool, make_predictions_after: int, time: int, batch_size: int, model_type:str, data_name:str, labels_name: str, answer_name: str, prediction_name: str, null_chance_boundary: float) -> None:
         start = seconds()
         device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         tables_file = "mimic_iv/tables.json"
@@ -50,14 +52,15 @@ class Defaults(Parameters):
         data_train, label_train, data_test, label_test, data_train_small, label_train_small = split_data(data, labels, every=eval_fraction)
         # answer = read_json(answer_name)
         prediction_data = read_json(prediction_name)["data"]
-        dataset_train = T5Dataset(model.tokenizer, data_train, label_train, is_test=False, append_schema_info=True, tables_file=tables_file, max_source_length=max_length_source, max_target_length=max_length_target)
+
+        dataset_train = T5Dataset(model.tokenizer, data_train, label_train, is_test=False, append_schema_info=append_scheme_info, tables_file=tables_file, max_source_length=max_length_source, max_target_length=max_length_target, give_extra_info=give_extra_info)
         train_loader = DataLoader(dataset_train, batch_size=batch_size, collate_fn=dataset_train.collate_fn, shuffle=True)
-        dataset_test = T5Dataset(model.tokenizer, data_test, label_test, is_test=False, append_schema_info=True, tables_file=tables_file, max_source_length=max_length_source, max_target_length=max_length_target)
+        dataset_test = T5Dataset(model.tokenizer, data_test, label_test, is_test=False, append_schema_info=append_scheme_info, tables_file=tables_file, max_source_length=max_length_source, max_target_length=max_length_target, give_extra_info=give_extra_info)
         test_loader = DataLoader(dataset_test, batch_size=batch_size, collate_fn=dataset_test.collate_fn, shuffle=False)
-        dataset_train_small = T5Dataset(model.tokenizer, data_train_small, label_train_small, is_test=False, append_schema_info=True, tables_file=tables_file, max_source_length=max_length_source, max_target_length=max_length_target)
+        dataset_train_small = T5Dataset(model.tokenizer, data_train_small, label_train_small, is_test=False, append_schema_info=True, tables_file=tables_file, max_source_length=max_length_source, max_target_length=max_length_target, give_extra_info=give_extra_info)
         train_loader_small = DataLoader(dataset_train_small, batch_size=batch_size, collate_fn=dataset_train_small.collate_fn, shuffle=False)
 
-        dataset_val = T5Dataset(model.tokenizer, prediction_data, None, is_test=True, append_schema_info=True, tables_file=tables_file, max_source_length=max_length_source, max_target_length=max_length_target)
+        dataset_val = T5Dataset(model.tokenizer, prediction_data, None, is_test=True, append_schema_info=append_scheme_info, tables_file=tables_file, max_source_length=max_length_source, max_target_length=max_length_target, give_extra_info=give_extra_info)
         val_loader = DataLoader(dataset_val, batch_size=batch_size, collate_fn=dataset_val.collate_fn, shuffle=False)
 
         for i in range(1000):
