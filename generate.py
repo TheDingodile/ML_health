@@ -397,7 +397,7 @@ from main import Defaults, GPU
 #         labels_name="mimic_iv/train/label.json",
 #         answer_name="mimic_iv/train/answer.json",
 #         prediction_name="mimic_iv/valid/data.json")
-for i in range(6):
+for i in range(3, 6):
         Defaults(name=f"added_scheduler{i}", 
                 GPU=GPU.v32, 
                 batch_size=12, 
