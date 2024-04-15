@@ -5,7 +5,7 @@ import time
 
 def assemble_model():
     evaluator = Evaluator()
-    out_evals = ["added_scheduler", "added_scheduler0", "added_scheduler1", "added_scheduler2"]
+    out_evals = ["added_scheduler", "added_scheduler0", "added_scheduler1", "added_scheduler2", "added_scheduler3", "added_scheduler4", "added_scheduler5"]
 
 
     datas = [json.load(open(f"predictions/{out_eval}-0/out_eval.json")) for out_eval in out_evals]

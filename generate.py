@@ -412,11 +412,27 @@ from main import Defaults, GPU
 #                 answer_name="mimic_iv/train/answer.json",
 #                 prediction_name="mimic_iv/valid/data.json")
         
-for i in range(2):
-        Defaults(name=f"added_scheduler_no_extra{i}", 
-                GPU=GPU.a80, 
+# for i in range(2):
+#         Defaults(name=f"added_scheduler_no_extra{i}", 
+#                 GPU=GPU.a80, 
+#                 batch_size=12, 
+#                 eval_fraction=50,
+#                 null_chance_boundary=1,
+#                 make_predictions_after=25,
+#                 model_type="t5",
+#                 t5_model_name="t5-base",
+#                 data_name="mimic_iv/train/data.json",  
+#                 labels_name="mimic_iv/train/label.json",
+#                 answer_name="mimic_iv/train/answer.json",
+#                 prediction_name="mimic_iv/valid/data.json",
+#                 append_scheme_info=False,
+#                 give_extra_info=False)
+
+for i in range(6):
+        Defaults(name=f"final{i}", 
+                GPU=GPU.v32, 
                 batch_size=12, 
-                eval_fraction=50,
+                eval_fraction=100,
                 null_chance_boundary=1,
                 make_predictions_after=25,
                 model_type="t5",
@@ -425,5 +441,4 @@ for i in range(2):
                 labels_name="mimic_iv/train/label.json",
                 answer_name="mimic_iv/train/answer.json",
                 prediction_name="mimic_iv/valid/data.json",
-                append_scheme_info=False,
-                give_extra_info=False)
+                prediction_name2 = "sample_data/test/data.json")

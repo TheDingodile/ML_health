@@ -23,6 +23,7 @@ class Defaults(Parameters):
     answer_name: str = "sample_data/train/answer.json"
 
     prediction_name: str = "sample_data/valid/data.json"
+    prediction_name2: str = "sample_data/test/data.json"
 
     model_type: str = "t5"
     t5_model_name: str = "t5-base"
@@ -38,7 +39,7 @@ class Defaults(Parameters):
     append_scheme_info: bool = True
     give_extra_info: bool = True
 
-    def run(self, name: str, eval_fraction: int, append_scheme_info: bool, give_extra_info: bool, max_length_source: int, max_length_target: int, lr: float, t5_model_name: str, isServer: bool, make_predictions_after: int, time: int, batch_size: int, model_type:str, data_name:str, labels_name: str, answer_name: str, prediction_name: str, null_chance_boundary: float) -> None:
+    def run(self, name: str, eval_fraction: int, append_scheme_info: bool, give_extra_info: bool, max_length_source: int, max_length_target: int, lr: float, t5_model_name: str, isServer: bool, make_predictions_after: int, time: int, batch_size: int, model_type:str, data_name:str, labels_name: str, answer_name: str, prediction_name: str, prediction_name2: str, null_chance_boundary: float) -> None:
         start = seconds()
         device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         tables_file = "mimic_iv/tables.json"
@@ -52,6 +53,7 @@ class Defaults(Parameters):
         data_train, label_train, data_test, label_test, data_train_small, label_train_small = split_data(data, labels, every=eval_fraction)
         # answer = read_json(answer_name)
         prediction_data = read_json(prediction_name)["data"]
+        prediction_data2 = read_json(prediction_name2)["data"]
 
         dataset_train = T5Dataset(model.tokenizer, data_train, label_train, is_test=False, append_schema_info=append_scheme_info, tables_file=tables_file, max_source_length=max_length_source, max_target_length=max_length_target, give_extra_info=give_extra_info)
         train_loader = DataLoader(dataset_train, batch_size=batch_size, collate_fn=dataset_train.collate_fn, shuffle=True)
@@ -62,6 +64,8 @@ class Defaults(Parameters):
 
         dataset_val = T5Dataset(model.tokenizer, prediction_data, None, is_test=True, append_schema_info=append_scheme_info, tables_file=tables_file, max_source_length=max_length_source, max_target_length=max_length_target, give_extra_info=give_extra_info)
         val_loader = DataLoader(dataset_val, batch_size=batch_size, collate_fn=dataset_val.collate_fn, shuffle=False)
+        dataset_final = T5Dataset(model.tokenizer, prediction_data2, None, is_test=True, append_schema_info=append_scheme_info, tables_file=tables_file, max_source_length=max_length_source, max_target_length=max_length_target, give_extra_info=give_extra_info)
+        final_loader = DataLoader(dataset_final, batch_size=batch_size, collate_fn=dataset_test.collate_fn, shuffle=False)
 
         for i in range(1000):
             
@@ -101,6 +105,10 @@ class Defaults(Parameters):
                 out_eval = model.model.generate(model.tokenizer, val_loader)
                 pred_dict = {out["id"]: out["pred"] if out["prob_null"] < null_chance_boundary else 'null' for out in out_eval}
                 evaluator.save_predictions(name, pred_dict, out_eval)
+
+                out_eval = model.model.generate(model.tokenizer, final_loader)
+                pred_dict = {out["id"]: out["pred"] if out["prob_null"] < null_chance_boundary else 'null' for out in out_eval}
+                evaluator.save_predictions(name + "test", pred_dict, out_eval)
                 break
 
             if seconds() - start > time:
