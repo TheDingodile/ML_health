@@ -1,0 +1,22 @@
+You are using the default legacy behaviour of the <class 'transformers.models.t5.tokenization_t5.T5Tokenizer'>. This is expected, and simply means that the `legacy` (previous) behavior will be used so nothing changes for you. If you want to use the new behaviour, set `legacy=False`. This should only be set if you understand what it means, and thoroughly read the reason why this was added as explained in https://github.com/huggingface/transformers/pull/24565
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Traceback (most recent call last):
+  File "/zhome/ea/9/137501/Desktop/ML_health/ML_health/main.py", line 121, in <module>
+    Defaults.start()
+  File "/zhome/ea/9/137501/Desktop/ML_health/project-env/lib/python3.10/site-packages/dtu/__init__.py", line 235, in start
+    cls.run(*args)
+  File "/zhome/ea/9/137501/Desktop/ML_health/ML_health/main.py", line 109, in run
+    out_eval = model.model.generate(model.tokenizer, final_loader)
+  File "/zhome/ea/9/137501/Desktop/ML_health/ML_health/src/models/T5_model.py", line 34, in generate
+    for batch in eval_loader:
+  File "/zhome/ea/9/137501/Desktop/ML_health/project-env/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 631, in __next__
+    data = self._next_data()
+  File "/zhome/ea/9/137501/Desktop/ML_health/project-env/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 675, in _next_data
+    data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
+  File "/zhome/ea/9/137501/Desktop/ML_health/project-env/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 54, in fetch
+    return self.collate_fn(data)
+  File "/zhome/ea/9/137501/Desktop/ML_health/ML_health/src/data/T5dataset.py", line 155, in collate_fn
+    target_ids = torch.stack([x["target_ids"] for x in batch]) # BS x SL
+  File "/zhome/ea/9/137501/Desktop/ML_health/ML_health/src/data/T5dataset.py", line 155, in <listcomp>
+    target_ids = torch.stack([x["target_ids"] for x in batch]) # BS x SL
+KeyError: 'target_ids'
