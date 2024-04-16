@@ -65,7 +65,7 @@ class Defaults(Parameters):
         dataset_val = T5Dataset(model.tokenizer, prediction_data, None, is_test=True, append_schema_info=append_scheme_info, tables_file=tables_file, max_source_length=max_length_source, max_target_length=max_length_target, give_extra_info=give_extra_info)
         val_loader = DataLoader(dataset_val, batch_size=batch_size, collate_fn=dataset_val.collate_fn, shuffle=False)
         dataset_final = T5Dataset(model.tokenizer, prediction_data2, None, is_test=True, append_schema_info=append_scheme_info, tables_file=tables_file, max_source_length=max_length_source, max_target_length=max_length_target, give_extra_info=give_extra_info)
-        final_loader = DataLoader(dataset_final, batch_size=batch_size, collate_fn=dataset_test.collate_fn, shuffle=False)
+        final_loader = DataLoader(dataset_final, batch_size=batch_size, collate_fn=dataset_final.collate_fn, shuffle=False)
 
         for i in range(1000):
             

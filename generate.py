@@ -428,20 +428,20 @@ from main import Defaults, GPU
 #                 append_scheme_info=False,
 #                 give_extra_info=False)
 
-for i in range(6):
-        Defaults(name=f"final_fix{i}", 
-                GPU=GPU.v32, 
-                batch_size=12, 
-                eval_fraction=100,
-                null_chance_boundary=1,
-                make_predictions_after=25,
-                model_type="t5",
-                t5_model_name="t5-base",
-                data_name="mimic_iv/train/data.json",  
-                labels_name="mimic_iv/train/label.json",
-                answer_name="mimic_iv/train/answer.json",
-                prediction_name="mimic_iv/valid/data.json",
-                prediction_name2 = "mimic_iv/test/data.json")
+# for i in range(6):
+#         Defaults(name=f"final_fix{i}", 
+#                 GPU=GPU.v32, 
+#                 batch_size=12, 
+#                 eval_fraction=100,
+#                 null_chance_boundary=1,
+#                 make_predictions_after=25,
+#                 model_type="t5",
+#                 t5_model_name="t5-base",
+#                 data_name="mimic_iv/train/data.json",  
+#                 labels_name="mimic_iv/train/label.json",
+#                 answer_name="mimic_iv/train/answer.json",
+#                 prediction_name="mimic_iv/valid/data.json",
+#                 prediction_name2 = "mimic_iv/test/data.json")
 
 # Defaults(name=f"final6", 
 #         GPU=GPU.a80, 
@@ -456,3 +456,18 @@ for i in range(6):
 #         answer_name="mimic_iv/train/answer.json",
 #         prediction_name="mimic_iv/valid/data.json",
 #         prediction_name2 = "mimic_iv/test/data.json")
+
+for i in range(6):
+        Defaults(name=f"final_fix_fix{i}", 
+                GPU=GPU.v32, 
+                batch_size=12, 
+                eval_fraction=50,
+                null_chance_boundary=1,
+                make_predictions_after=25,
+                model_type="t5",
+                t5_model_name="t5-base",
+                data_name="mimic_iv/train/data.json",  
+                labels_name="mimic_iv/train/label.json",
+                answer_name="mimic_iv/train/answer.json",
+                prediction_name="mimic_iv/valid/data.json",
+                prediction_name2 = "mimic_iv/test/data.json")
