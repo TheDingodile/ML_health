@@ -3,12 +3,17 @@ import json
 import time
 
 
-def assemble_model():
+def assemble_model(test=False):
     evaluator = Evaluator()
-    out_evals = ["added_scheduler", "added_scheduler0", "added_scheduler1", "added_scheduler2", "added_scheduler3", "added_scheduler4", "added_scheduler5"]
+    # out_evals = ["added_scheduler", "added_scheduler0", "added_scheduler1", "added_scheduler2", "added_scheduler3", "added_scheduler4", "added_scheduler5"]
+    out_evals = ["final_fix_fix0", "final_fix_fix1", "final_fix_fix2", "final_fix_fix3", "final_fix_fix4", "final_fix_fix5"]
 
-
-    datas = [json.load(open(f"predictions/{out_eval}-0/out_eval.json")) for out_eval in out_evals]
+    if not test:
+        datas = [json.load(open(f"predictions/{out_eval}-0/out_eval.json")) for out_eval in out_evals]
+        n = "assemble_model"
+    else:
+        datas = [json.load(open(f"predictions/{out_eval}-0test/out_eval.json")) for out_eval in out_evals]
+        n = "assemble_model_test"
     pred_dict = {out["id"]: [] for out in datas[0]}
     for data in datas:
         for out in data:
@@ -22,8 +27,8 @@ def assemble_model():
             counts += 1
             pred_dict[pred] = "null"
     print(counts/pred_dict.__len__() * 100)
-
-    evaluator.save_predictions("assemble_model", pred_dict)
+    
+    evaluator.save_predictions(n, pred_dict)
 
 def entropy_model():
     evaluator = Evaluator()
