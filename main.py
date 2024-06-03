@@ -44,7 +44,9 @@ class Defaults(Parameters):
         evaluator = Evaluator()
 
         raw_data = read_json(data_name)
-        data = {d["id"]: d["question"] for d in raw_data}
+        
+        data = []
+        [data.append({"id": d["id"], "question": d["question"]}) for d in raw_data]
         labels = {d["id"]: d["query"] for d in raw_data}
 
         raw_valid_data = read_json(prediction_name)
