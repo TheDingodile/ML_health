@@ -1,0 +1,12 @@
+You are using the default legacy behaviour of the <class 'transformers.models.t5.tokenization_t5.T5Tokenizer'>. This is expected, and simply means that the `legacy` (previous) behavior will be used so nothing changes for you. If you want to use the new behaviour, set `legacy=False`. This should only be set if you understand what it means, and thoroughly read the reason why this was added as explained in https://github.com/huggingface/transformers/pull/24565
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Traceback (most recent call last):
+  File "/zhome/ea/9/137501/Desktop/ML_health/ML_health/main.py", line 83, in <module>
+    Defaults.start()
+  File "/zhome/ea/9/137501/Desktop/ML_health/project-env/lib/python3.10/site-packages/dtu/__init__.py", line 235, in start
+    cls.run(*args)
+  File "/zhome/ea/9/137501/Desktop/ML_health/ML_health/main.py", line 55, in run
+    dataset_train = T5Dataset(model.tokenizer, data, labels, is_test=False, append_schema_info=append_scheme_info, tables_file=tables_file, max_source_length=max_length_source, max_target_length=max_length_target, give_extra_info=give_extra_info)
+  File "/zhome/ea/9/137501/Desktop/ML_health/ML_health/src/data/T5dataset.py", line 63, in __init__
+    ids.append(sample['id'])
+TypeError: 'int' object is not subscriptable
