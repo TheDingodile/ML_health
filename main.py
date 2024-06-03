@@ -4,11 +4,13 @@ import torch
 import wandb
 from time import time as seconds
 from src.models.Model import Model
-from src.utils import read_json, save_predictions, save_model
+from src.utils import read_json, save_model
 from src.evaluator import Evaluator
 from src.data.T5dataset import T5Dataset
 from torch.utils.data import DataLoader
 from src.utils import split_data
+import json
+import os
 
 
 @dtu
@@ -70,12 +72,13 @@ class Defaults(Parameters):
                 else:
                     print(f"train_loss: {train_loss:.6f}")
 
-            if i >= make_predictions_after:
-                # eval on prediction data
-                out_eval = model.model.generate(model.tokenizer, valid_loader)
-                pred_dict = {out["id"]: out["pred"] for out in out_eval}
-                evaluator.save_predictions(name, pred_dict)
-                break
+            # eval on prediction data
+            out_eval = model.model.generate(model.tokenizer, valid_loader)
+            pred_dict = {out["id"]: out["pred"] for out in out_eval}
+
+            # save pred_dict as json
+            with open(f"predictions/{name}.json", "w") as f:
+                json.dump(pred_dict, f)
 
             if seconds() - start > time:
                 print(f"Time limit reached: epoch {i}")

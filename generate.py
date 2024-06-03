@@ -475,11 +475,14 @@ from main import Defaults, GPU
 data_name = "dataset/mimic_iv_cxr/train/train_data.json"
 prediction_name = "dataset/mimic_iv_cxr/valid/valid_data.json"
 
-Defaults(name=f"project2LLM", 
-        GPU=GPU.v32, 
-        batch_size=12, 
-        make_predictions_after=2,
-        model_type="t5",
-        t5_model_name="t5-base",
-        data_name=data_name,  
-        prediction_name=prediction_name,)
+
+for i in range(6):
+        Defaults(name=f"final_LLM_{i}", 
+                GPU=GPU.v32, 
+                batch_size=12, 
+                make_predictions_after=1,
+                model_type="t5",
+                t5_model_name="t5-base",
+                data_name=data_name,  
+                prediction_name=prediction_name,
+                lr=0.0005)
