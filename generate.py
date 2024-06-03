@@ -481,5 +481,5 @@ Defaults(name=f"project2LLM",
         make_predictions_after=2,
         model_type="t5",
         t5_model_name="t5-base",
-        data_name="mimic_iv/train/data.json",  
-        prediction_name="mimic_iv/valid/data.json",)
+        data_name=data_name,  
+        prediction_name=prediction_name,)
