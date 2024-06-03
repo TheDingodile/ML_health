@@ -44,14 +44,16 @@ class Defaults(Parameters):
         evaluator = Evaluator()
 
         raw_data = read_json(data_name)
-        
+
         data = []
         [data.append({"id": d["id"], "question": d["question"]}) for d in raw_data]
         labels = {d["id"]: d["query"] for d in raw_data}
 
         raw_valid_data = read_json(prediction_name)
 
-        valid_data = {d["id"]: d["question"] for d in raw_valid_data}
+        valid_data = []
+        [valid_data.append({"id": d["id"], "question": d["question"]}) for d in raw_valid_data]
+        # valid_data = {d["id"]: d["question"] for d in raw_valid_data}
 
 
         dataset_train = T5Dataset(model.tokenizer, data, labels, is_test=False, append_schema_info=append_scheme_info, tables_file=tables_file, max_source_length=max_length_source, max_target_length=max_length_target, give_extra_info=give_extra_info)
