@@ -316,3 +316,95 @@ wandb: ⭐️ View project at https://wandb.ai/kobomao/ML_healthcare
 wandb: 🚀 View run at https://wandb.ai/kobomao/ML_healthcare/runs/e7qna7oa
 You are using the default legacy behaviour of the <class 'transformers.models.t5.tokenization_t5.T5Tokenizer'>. This is expected, and simply means that the `legacy` (previous) behavior will be used so nothing changes for you. If you want to use the new behaviour, set `legacy=False`. This should only be set if you understand what it means, and thoroughly read the reason why this was added as explained in https://github.com/huggingface/transformers/pull/24565
 Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+
+<style>
+c { color: #9cdcfe; font-family: 'Verdana', sans-serif;} /* VARIABLE */
+d { color: #4EC9B0; font-family: 'Verdana', sans-serif;} /* CLASS */
+e { color: #569cd6; font-family: 'Verdana', sans-serif;} /* BOOL */
+f { color: #b5cea8; font-family: 'Verdana', sans-serif;} /* NUMBERS */
+j { color: #ce9178; font-family: 'Verdana', sans-serif;} /* STRING */
+k { font-family: 'Verdana', sans-serif;} /* SYMBOLS */
+</style>
+
+# Parameters
+
+| PARAMETER         | TYPE              | VALUE             |
+|-------------------|-------------------|-------------------|
+| <c>name</c>       | <d>str</d>        | <j>"project2LLM-0"</j> |
+| <c>time</c>       | <d>int</d>        | <f>82800</f>      |
+| <c>data_name</c>  | <d>str</d>        | <j>"dataset/mimic_iv_cxr/train/train_data.json"</j> |
+| <c>prediction_name</c>| <d>str</d>        | <j>"dataset/mimic_iv_cxr/valid/valid_data.json"</j> |
+| <c>model_type</c> | <d>str</d>        | <j>"t5"</j>       |
+| <c>t5_model_name</c>| <d>str</d>        | <j>"t5-base"</j>  |
+| <c>batch_size</c> | <d>int</d>        | <f>12</f>         |
+| <c>make_predictions_after</c>| <d>int</d>        | <f>2</f>          |
+| <c>lr</c>         | <d>float</d>      | <f>0.001</f>      |
+| <c>max_length_source</c>| <d>int</d>        | <f>512</f>        |
+| <c>max_length_target</c>| <d>int</d>        | <f>512</f>        |
+| <c>append_scheme_info</c>| <d>bool</d>       | <e>True</e>       |
+| <c>give_extra_info</c>| <d>bool</d>       | <e>True</e>       |
+
+# Output
+
+```
+```
+wandb: - 0.005 MB of 0.005 MB uploadedwandb: \ 0.005 MB of 0.005 MB uploadedwandb: | 0.005 MB of 0.005 MB uploadedwandb: / 0.008 MB of 0.011 MB uploaded (0.002 MB deduped)wandb: - 0.008 MB of 0.011 MB uploaded (0.002 MB deduped)wandb: \ 0.011 MB of 0.011 MB uploaded (0.002 MB deduped)wandb: 
+wandb: Run history:
+wandb: train_loss █▄▂▂▁▁▁▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb: 
+wandb: Run summary:
+wandb: train_loss 0.00018
+wandb: 
+wandb: 🚀 View run project2LLM-0 at: https://wandb.ai/kobomao/ML_healthcare/runs/e7qna7oa
+wandb: ⭐️ View project at: https://wandb.ai/kobomao/ML_healthcare
+wandb: Synced 5 W&B file(s), 0 media file(s), 2 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20240603_093922-e7qna7oa/logs
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 21903196: <project2LLM_0> in cluster <dcc> Done
+
+Job <project2LLM_0> was submitted from host <n-62-27-23> by user <s183914> in cluster <dcc> at Mon Jun  3 09:39:10 2024
+Job was executed on host(s) <4*n-62-20-10>, in queue <gpuv100>, as user <s183914> in cluster <dcc> at Mon Jun  3 09:39:12 2024
+</zhome/ea/9/137501> was used as the home directory.
+</zhome/ea/9/137501/Desktop/ML_health/ML_health> was used as the working directory.
+Started at Mon Jun  3 09:39:12 2024
+Terminated at Mon Jun  3 13:03:45 2024
+Results reported at Mon Jun  3 13:03:45 2024
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/sh
+#BSUB -q gpuv100
+#BSUB -gpu "num=1:mode=exclusive_process"
+#BSUB -n 4
+#BSUB -R "rusage[mem=16G]"
+#BSUB -R "select[gpu32gb]"
+#BSUB -R "span[hosts=1]"
+#BSUB -W 1440
+# end of BSUB options
+module -s load python3
+source ../project-env/bin/activate
+
+python main.py $MYARGS
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   12218.61 sec.
+    Max Memory :                                 1979 MB
+    Average Memory :                             1734.51 MB
+    Total Requested Memory :                     65536.00 MB
+    Delta Memory :                               63557.00 MB
+    Max Swap :                                   -
+    Max Processes :                              6
+    Max Threads :                                35
+    Run time :                                   12272 sec.
+    Turnaround time :                            12275 sec.
+
+The output (if any) is above this job summary.
+

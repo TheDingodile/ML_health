@@ -1,0 +1,237 @@
+{
+    "os": "Linux-5.4.274-1.el7.elrepo.x86_64-x86_64-with-glibc2.17",
+    "python": "3.10.7",
+    "heartbeatAt": "2024-06-03T08:12:45.737779",
+    "startedAt": "2024-06-03T08:12:45.162523",
+    "docker": null,
+    "cuda": null,
+    "args": [
+        "-name",
+        "final_LLM_0-0",
+        "-time",
+        "82800",
+        "-data_name",
+        "dataset/mimic_iv_cxr/train/train_data.json",
+        "-prediction_name",
+        "dataset/mimic_iv_cxr/valid/valid_data.json",
+        "-model_type",
+        "t5",
+        "-t5_model_name",
+        "t5-base",
+        "-batch_size",
+        "12",
+        "-make_predictions_after",
+        "1",
+        "-lr",
+        "0.0005",
+        "-max_length_source",
+        "512",
+        "-max_length_target",
+        "512",
+        "-append_scheme_info",
+        "True",
+        "-give_extra_info",
+        "True",
+        "-ID",
+        "0"
+    ],
+    "state": "running",
+    "program": "/zhome/ea/9/137501/Desktop/ML_health/ML_health/main.py",
+    "codePathLocal": "main.py",
+    "codePath": "main.py",
+    "git": {
+        "remote": "https://github.com/TheDingodile/ML_health.git",
+        "commit": "b41f3e6a93d2ee0fddf899b334f614c3445830a1"
+    },
+    "email": "jakob@3esser.dk",
+    "root": "/zhome/ea/9/137501/Desktop/ML_health/ML_health",
+    "host": "n-62-20-12",
+    "username": "s183914",
+    "executable": "/zhome/ea/9/137501/Desktop/ML_health/project-env/bin/python",
+    "cpu_count": 32,
+    "cpu_count_logical": 32,
+    "cpu_freq": {
+        "current": 3004.85053125,
+        "min": 0.0,
+        "max": 0.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 3387.743,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3392.642,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3397.66,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3399.705,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3395.755,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3395.755,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3395.755,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3395.755,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2687.614,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3087.926,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2704.43,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2708.449,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2712.378,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2711.373,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2711.756,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3115.063,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3309.612,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3087.47,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2694.255,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2697.455,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3655.408,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3281.346,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2711.716,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2713.936,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2700.238,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2702.213,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2699.74,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2703.89,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2705.313,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2726.027,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2728.048,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3438.791,
+            "min": 0.0,
+            "max": 0.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 71.9168586730957,
+            "used": 12.118244171142578
+        }
+    },
+    "gpu": "Tesla V100-SXM2-32GB",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "Tesla V100-SXM2-32GB",
+            "memory_total": 34359738368
+        }
+    ],
+    "memory": {
+        "total": 377.5543327331543
+    }
+}
