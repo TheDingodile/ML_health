@@ -25,3 +25,4 @@ config: {'batch_size': 12, 'isServer': True, 'device': 'cuda'}
 2024-06-04 00:48:42,681 INFO    MainThread:30142 [wandb_run.py:_redirect():2294] Wrapping output streams.
 2024-06-04 00:48:42,681 INFO    MainThread:30142 [wandb_run.py:_redirect():2319] Redirects installed.
 2024-06-04 00:48:42,686 INFO    MainThread:30142 [wandb_init.py:init():838] run started, returning control to user process
+2024-06-04 06:32:03,740 WARNING MsgRouterThr:30142 [router.py:message_loop():77] message_loop has been closed
